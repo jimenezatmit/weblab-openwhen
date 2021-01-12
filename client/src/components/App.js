@@ -3,6 +3,10 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 
+import NavBar from "./modules/NavBar.js";
+import Create from "./pages/Create.js";
+import Read from "./pages/Read.js";
+
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -47,6 +51,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <NavBar />
         <Router>
           <Skeleton
             path="/"
@@ -55,6 +60,8 @@ class App extends Component {
             userId={this.state.userId}
           />
           <NotFound default />
+          <Create path="/create/" />
+          <Read path="/read/" />
         </Router>
       </>
     );
