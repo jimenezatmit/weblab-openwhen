@@ -37,4 +37,4 @@ class Package extends Component {
   };
 
 };
-export default Letter;
+export default Package;
