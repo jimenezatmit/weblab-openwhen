@@ -13,8 +13,8 @@ class Letter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open_date : String,
-      message: String,
+      open_date : "00/00/0000",//String,
+      message: "Sample letter content" //String,
       //_id: number?? idk does this need an id?
     };
   }

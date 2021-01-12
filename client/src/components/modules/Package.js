@@ -10,11 +10,11 @@ import "./Package.css";
 class Package extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      _id : Number,
-      letter_ids: Object, //list of letter ids?
-      sender_name: String,
-      recipient_email: String
+    this.state = { //currently set to dummy default values
+      _id : 0, //Number,
+      letter_ids: [0,1,2], //Object, //list of letter ids?
+      sender_name: "Sample Huevita", //String,
+      recipient_email: "sample_email@huevita.com" //String
     };
   }
 
