@@ -18,6 +18,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
 :root {
+  /* our colors */
+  --lightpurple: #b4adea;
+  --black: black;
+  --darkgray: #50514f;
+  --darkpurple: #52489c;
+  --tealblue: #59c3c3;
+  --seafoam: #abf8d8;
+  --eggshell: #fdfff7;
+  /* their original colors */
   --primary: #396dff;
   --primary--dim: #6987db;
   --darkgrey: #d4d4d4;

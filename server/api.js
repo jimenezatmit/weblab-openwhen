@@ -61,10 +61,16 @@ router.post("/package", (req, res) => {
     _id: req.user._id,
     letter_ids: req.body.letter_ids,
     sender_name: req.user.name,
-    recipient_email = req.body.recipient_email,
+    //recipient_email = req.body.recipient_email //this line causes an error
   });
 
   newPackage.save().then((package) => res.send(package));
+});
+//pasted in from catbook
+router.get("/user", (req, res) => {
+  User.findById(req.query.userid).then((user) => {
+    res.send(user);
+  });
 });
 
 // anything else falls to this "not found" case
