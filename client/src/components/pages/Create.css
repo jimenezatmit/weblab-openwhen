@@ -1,0 +1,65 @@
+.Create-title {
+  font-size: var(--xxl);
+  font-weight: bold;
+}
+
+#subHeading {
+  font-weight: 300;
+  font-size: var(--l);
+  margin-top: var(--xs);
+  margin-bottom: var(--xxl);
+  text-align: center;
+  color: var(--black);
+}
+
+.Create-description {
+  font-weight: 300;
+  font-size: var(--l);
+  margin: var(--m) var(--s);
+  text-align: center;
+  color: var(--tealblue);
+}
+
+.Create-subDescription {
+  font-weight: 300;
+  font-size: var(--m);
+  margin: var(--m) var(--s);
+  text-align: center;
+  color: var(--tealblue);
+}
+
+.Create-button {
+  background: var(--tealblue);
+  border: 1px solid #59c3c3;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+
+  width: 130px;
+  height: 65px;
+}
+
+.Create-link,
+.Create-link:visited {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.Create-field {
+  background: #ffffff;
+
+  border: 1px solid #59c3c3;
+  box-sizing: border-box;
+  border-radius: 20px;
+
+  margin-bottom: 24px;
+}
+
+#smallText {
+  font-weight: 300;
+  font-size: var(--m);
+  text-align: center;
+  color: var(--tealblue);
+  margin-bottom: var(--s);
+}
