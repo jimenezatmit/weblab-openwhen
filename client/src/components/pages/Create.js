@@ -95,7 +95,7 @@ class Create extends Component {
 
         <div className="u-textCenter">
           <button type="button" className="Create-button Create-subDescription">
-            <Link to="/404" className="Create-link">
+            <Link to="/thankyou" className="Create-link">
               send letters!
             </Link>
           </button>
