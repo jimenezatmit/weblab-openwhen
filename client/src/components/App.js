@@ -7,6 +7,7 @@ import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
 import Create from "./pages/Create.js";
 import Read from "./pages/Read.js";
+import IndividualLetterRead from "./pages/IndividualLetterRead.js"
 
 import "../utilities.css";
 
@@ -64,6 +65,7 @@ class App extends Component {
           <Home path="/" />
           <Create path="/create/" />
           <Read path="/read/" />
+          <IndividualLetterRead path = "/letter/"/>
         </Router>
       </>
     );

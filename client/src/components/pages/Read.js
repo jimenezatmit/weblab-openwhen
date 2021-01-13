@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import {Link} from "@reach/router";
+import {Router} from "@reach/router";
+import { navigate } from "@reach/router";
+
 
 import "../../utilities.css";
 import "./Read.css";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
+
 
 class Read extends Component {
   constructor(props) {
@@ -10,8 +18,17 @@ class Read extends Component {
 
   render() {
     return (
+            
       <>
-        <h1>Read Page</h1>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous"></link>
+        <h1 className = "u-textCenter"> Kate has sent you a letter!</h1>
+        <h2 className = "u-textCenter"> Click on envelope to open </h2>
+        {/* <FontAwesomeIcon icon={faEnvelope} /> */}
+        <div className = "Read-envelope">
+            <button  onClick={() => navigate("/letter/")}>
+                 <i className="far fa-envelope fa-10x"></i>
+            </button>
+        </div>
       </>
     );
   }
