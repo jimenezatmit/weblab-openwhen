@@ -22,11 +22,11 @@ class Read extends Component {
       <>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous"></link>
         <h1 className = "u-textCenter"> Kate has sent you a letter!</h1>
-        <h2 className = "u-textCenter"> Click on envelope to open </h2>
-        {/* <FontAwesomeIcon icon={faEnvelope} /> */}
-        <div className = "Read-envelope">
-            <i onClick={() => navigate("/letter/")} className="far fa-envelope fa-10x"></i>
+        <h2 className = "Read-instruction"> Click on envelope to open </h2>
+        <div className = "Read-envelopeCentered Read-envelopeBlue">
+            <i onClick={() => navigate("/letter/")} className="far fa-envelope fa-10x "></i>
         </div>
+        <h3 className = "Read-prompt"> open when you've finished your website... </h3>
       </>
     );
   }
