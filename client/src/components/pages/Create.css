@@ -52,8 +52,8 @@
   border: 1px solid #59c3c3;
   box-sizing: border-box;
   border-radius: 20px;
-
   margin-bottom: 24px;
+  font-family: "Quicksand", sans-serif;
 }
 
 #smallText {
@@ -62,4 +62,5 @@
   text-align: center;
   color: var(--tealblue);
   margin-bottom: var(--s);
+  font-family: "Quicksand", sans-serif;
 }
