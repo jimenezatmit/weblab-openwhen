@@ -25,9 +25,7 @@ class Read extends Component {
         <h2 className = "u-textCenter"> Click on envelope to open </h2>
         {/* <FontAwesomeIcon icon={faEnvelope} /> */}
         <div className = "Read-envelope">
-            <button  onClick={() => navigate("/letter/")}>
-                 <i className="far fa-envelope fa-10x"></i>
-            </button>
+            <i onClick={() => navigate("/letter/")} className="far fa-envelope fa-10x"></i>
         </div>
       </>
     );
