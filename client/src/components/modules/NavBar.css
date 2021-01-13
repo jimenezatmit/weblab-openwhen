@@ -3,9 +3,16 @@
   background-color: var(--lightpurple);
 }
 
+.NavBar-tabContainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: var(--s) var(--m);
+  align-items: center;
+}
+
 .NavBar-title {
   color: var(--black);
-  font-size: 20px;
+  font-size: var(--l);
 }
 
 .NavBar-linkContainer {

@@ -38,6 +38,8 @@
   --s: 8px;
   --m: 16px;
   --l: 24px;
+  --xl: 36px;
+  --xxl: 48px;
 }
 
 body {
@@ -73,7 +75,7 @@ form {
 }
 
 .u-bold {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .u-textCenter {

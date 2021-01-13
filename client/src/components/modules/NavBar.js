@@ -14,10 +14,9 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-title u-inlineBlock">open when...</div>
-        <div className="NavBar-linkContainer u-inlineBlock">
-          <Link to="/" className="NavBar-link">
-            home
+        <div className="u-inlineBlock NavBar-tabContainer">
+          <Link to="/" className="NavBar-title NavBar-link u-bold">
+            open when...
           </Link>
           <Link to="/create/" className="NavBar-link">
             create

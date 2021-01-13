@@ -1,0 +1,48 @@
+.Home-title {
+  font-size: var(--xxl);
+  font-weight: bold;
+}
+
+.Home-line {
+  border-color: var(--darkgrey);
+}
+
+.Home-subContainer {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.Home-subContainer + .Home-subContainer {
+  margin-left: var(--m);
+}
+
+.Home-subTitle {
+  font-weight: bold;
+  font-size: var(--xl);
+  margin: var(--m) var(--s);
+  text-align: center;
+}
+
+.Home-description {
+  font-weight: 300;
+  font-size: 24px;
+  margin: var(--m) var(--s);
+  text-align: center;
+}
+
+.Home-button {
+  background: var(--tealblue);
+  border: 1px solid #59c3c3;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+
+  width: 130px;
+  height: 65px;
+}
+
+.Home-link,
+.Home-link:visited {
+  color: var(--black);
+  text-decoration: none;
+}
