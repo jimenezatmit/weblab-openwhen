@@ -15,7 +15,10 @@ class Letter extends Component {
     this.state = {
       open_date : "00/00/0000",//String,
       message: "Sample letter content" //String,
-      //_id: number?? idk does this need an id?
+      _id: "0",
+      recipient_email: "sampleemail@huevita.com",
+      sender_name: "Sample Sender"
+
     };
   }
 
@@ -24,6 +27,9 @@ class Letter extends Component {
       this.setState({
         message: letter.message,
         open_date: letter.open_date
+        _id: letter._id,
+        recipient_email: letter.recipient_email,
+        sender_name: letter.sender_name
       });
     });
   }
@@ -34,6 +40,9 @@ class Letter extends Component {
     this.setState({
       open_date: letterObj.open_date,
       message: letterObj.message
+      _id: letterObj._id,
+        recipient_email: letterObj.recipient_email,
+        sender_name: letterObj.sender_name
     });
   };
 

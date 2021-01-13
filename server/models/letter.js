@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const LetterSchema = new mongoose.Schema({
     open_date : String,
     message: String,
-    _id: Number  //maybe?
+    _id: Number,
+    recipient_email: String,
+    sender_name: String
 });
 
 // compile model from schema
