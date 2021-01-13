@@ -78,7 +78,7 @@ class Create extends Component {
               className="Create-field"
               placeholder="write letter here"
               type="text"
-              id="messasge"
+              id="message"
               name="message"
             ></textarea>
             <br></br>
