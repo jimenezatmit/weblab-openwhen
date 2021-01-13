@@ -12,7 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 //added by Kate
-const Letter  = require("./models/letter");
+const Letter = require("./models/letter");
 const Package = require("./models/package");
 
 // import authentication library
@@ -37,7 +37,8 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
@@ -50,11 +51,18 @@ router.post("/letter", (req, res) => {
   const newLetter = new Letter({
     open_date: req.body.open_date,
     message: req.body.message,
-    _id: req.body._id
+    _id: req.body._id,
+    recipient_email: req.body.recipient_email,
+    sender_name: req.body.sender_name,
+    prompt: req.body.prompt,
   });
 
-  newLetter.save().then((letter) => res.send(letter));
+  newLetter
+    .save()
+    .then((letter) => res.send(letter))
+    .then(console.log("added letter"));
 });
+
 //attempting post package
 router.post("/package", (req, res) => {
   const newPackage = new Package({
