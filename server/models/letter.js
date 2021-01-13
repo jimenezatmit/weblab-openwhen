@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 
 //define a comment schema for the database
 const LetterSchema = new mongoose.Schema({
-    open_date : String,
-    message: String,
-    _id: Number,
-    recipient_email: String,
-    sender_name: String
+  open_date: String,
+  message: String,
+  _id: Number,
+  recipient_email: String,
+  sender_name: String,
+  prompt: String,
 });
 
 // compile model from schema
