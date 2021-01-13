@@ -1,3 +1,16 @@
-.Read-envelope {
+.Read-instruction {
+  color: var(--darkgray);
   text-align: center;
+}
+
+.Read-prompt {
+  text-align: center;
+  margin: var(--s) var(--s);
+}
+
+.Read-envelopeCentered {
+  text-align: center;
+}
+.Read-envelopeBlue {
+  color: var(--tealblue);
 }
