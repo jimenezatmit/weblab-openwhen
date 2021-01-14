@@ -117,7 +117,7 @@ class Letter extends Component {
           </form>
         </div>
 
-        <div className="u-textCenter">
+        {/* <div className="u-textCenter">
           <button
             type="button"
             className="Create-button Create-subDescription"
@@ -127,9 +127,9 @@ class Letter extends Component {
               send letter!
             </Link>
           </button>
-        </div>
+        </div> */}
 
-        {/* <hr /> */}
+        <hr />
       </>
     );
   }
