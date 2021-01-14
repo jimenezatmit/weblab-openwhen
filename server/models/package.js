@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 //define a comment schema for the database
 const PackageSchema = new mongoose.Schema({
-    _id : Number,
-    letter_ids: Object, //list of letter ids?
+    package_id : String,
     sender_name: String,
     recipient_email: String
 });

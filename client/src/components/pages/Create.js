@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import NewLetter from "../modules/Letter.js";
+import Letter from "../modules/Letter.js";
 
 import "../../utilities.css";
 import "./Create.css";
@@ -8,9 +8,6 @@ import "./Create.css";
 class Create extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      letters: [],
-    };
   }
 
   componentDidMount() {
@@ -34,7 +31,7 @@ class Create extends Component {
         <div id="subHeading">
           enter the fields below to write letters to send to your recipient!
         </div>
-        <NewLetter addNewLetter={this.addNewLetter} />
+        <Letter addNewLetter={this.addNewLetter} />
         {/* add state, number of forms showing, add 1 to number of forms showing with every button, using .map */}
       </>
     );
