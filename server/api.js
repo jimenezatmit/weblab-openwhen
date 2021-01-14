@@ -51,7 +51,7 @@ router.post("/letter", (req, res) => {
   const newLetter = new Letter({
     open_date: req.body.open_date,
     message: req.body.message,
-    _id: req.body._id,
+    // _id: req.body._id,
     recipient_email: req.body.recipient_email,
     sender_name: req.body.sender_name,
     prompt: req.body.prompt,
@@ -60,7 +60,7 @@ router.post("/letter", (req, res) => {
   newLetter
     .save()
     .then((letter) => res.send(letter))
-    .then(console.log("added letter"));
+    .then(() => console.log("added letter"));
 });
 
 //attempting post package

@@ -19,12 +19,13 @@ class Create extends Component {
 
   // this gets called when the user pushes "add another!", so their
   // letters get stored in the letter package right away
-  addNewLetter = (letterObj) => {
-    this.setState({
-      letters: this.state.letters.concat(letterObj),
-    });
-    console.log(this.state.letters);
-  };
+  // not relevant unless displaying letters
+  // addNewLetter = (letterObj) => {
+  //   this.setState({
+  //     letters: this.state.letters.concat(letterObj),
+  //   });
+  //   console.log(this.state.letters);
+  // };
 
   render() {
     return (
@@ -34,6 +35,7 @@ class Create extends Component {
           enter the fields below to write letters to send to your recipient!
         </div>
         <NewLetter addNewLetter={this.addNewLetter} />
+        {/* add state, number of forms showing, add 1 to number of forms showing with every button, using .map */}
       </>
     );
   }

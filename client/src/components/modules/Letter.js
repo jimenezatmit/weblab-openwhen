@@ -23,6 +23,7 @@ class Letter extends Component {
       recipient_email: "",
       sender_name: "",
       prompt: "",
+      //has sent
     };
   }
 
@@ -41,11 +42,15 @@ class Letter extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state);
+
+    const body = { parent: this.props.letterID, content: value }; //fields that we would save into api
+    post("/api/letter", body);
+
     // this.props.onSubmit && this.props.onSubmit(this.state.value);
     this.setState({
       open_date: "",
       message: "",
-      _id: "",
+      // _id: "",
       recipient_email: "",
       sender_name: "",
       prompt: "",

@@ -54,6 +54,7 @@ class App extends Component {
   render() {
     return (
       <>
+        {/* put in div and fixed height */}
         <NavBar />
         <Router>
           {/* <Skeleton
