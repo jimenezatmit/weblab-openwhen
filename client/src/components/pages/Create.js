@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import Letter from "../modules/Letter.js";
+import Package from "../modules/Package.js";
 
 import "../../utilities.css";
 import "./Create.css";
@@ -14,25 +15,16 @@ class Create extends Component {
     document.title = "Create Page";
   }
 
-  // this gets called when the user pushes "add another!", so their
-  // letters get stored in the letter package right away
-  // not relevant unless displaying letters
-  // addNewLetter = (letterObj) => {
-  //   this.setState({
-  //     letters: this.state.letters.concat(letterObj),
-  //   });
-  //   console.log(this.state.letters);
-  // };
-
   render() {
     return (
       <>
         <h1 className="Create-title u-textCenter">Create</h1>
-        <div id="subHeading">
-          enter the fields below to write letters to send to your recipient!
-        </div>
-        <Letter addNewLetter={this.addNewLetter} />
-        {/* add state, number of forms showing, add 1 to number of forms showing with every button, using .map */}
+        <div id="subHeading">enter the fields below to get started!</div>
+
+        {/* {packageObj}
+        <Letter packageID={packageObj._id} /> */}
+
+        <Package></Package>
       </>
     );
   }

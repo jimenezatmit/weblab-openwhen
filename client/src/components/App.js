@@ -9,6 +9,7 @@ import Create from "./pages/Create.js";
 import Read from "./pages/Read.js";
 import IndividualLetterRead from "./pages/IndividualLetterRead.js";
 import ThankYou from "./pages/ThankYou.js";
+import WriteLetters from "./pages/WriteLetters.js";
 
 import "../utilities.css";
 
@@ -54,7 +55,7 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* put in div and fixed height */}
+        {/* put in div and fixed height, 100%-72 pixels */}
         <NavBar />
         <Router>
           {/* <Skeleton
@@ -69,6 +70,7 @@ class App extends Component {
           <Read path="/read/" />
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />
+          <WriteLetters path="/writeletters" />
         </Router>
       </>
     );

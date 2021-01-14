@@ -46,34 +46,39 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
-//jan 12 Kate  attempting post letter, no idea what I am doing
 router.post("/letter", (req, res) => {
   const newLetter = new Letter({
     open_date: req.body.open_date,
     message: req.body.message,
-    // _id: req.body._id,
-    recipient_email: req.body.recipient_email,
-    sender_name: req.body.sender_name,
+    package_id: req.body.package_id,
+    // recipient_email: req.body.recipient_email,
+    // sender_name: req.body.sender_name,
     prompt: req.body.prompt,
+    has_sent: req.body.has_sent,
   });
 
   newLetter
     .save()
     .then((letter) => res.send(letter))
-    .then(() => console.log("added letter"));
+    .then(() => console.log(newLetter));
 });
 
 //attempting post package
 router.post("/package", (req, res) => {
   const newPackage = new Package({
-    _id: req.user._id,
-    letter_ids: req.body.letter_ids,
-    sender_name: req.user.name,
+    sender_name: req.body.sender_name,
+    recipient_email: req.body.recipient_email,
     //recipient_email = req.body.recipient_email //this line causes an error
+    // _id: req.user._id,
+    // letter_ids: req.body.letter_ids,
   });
 
-  newPackage.save().then((package) => res.send(package));
+  newPackage
+    .save()
+    .then((package) => res.send(package))
+    .then(() => console.log(newPackage));
 });
+
 //pasted in from catbook
 router.get("/user", (req, res) => {
   User.findById(req.query.userid).then((user) => {
