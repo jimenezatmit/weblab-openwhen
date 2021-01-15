@@ -24,6 +24,10 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
+// get user and password for OPEN WHEN email
+const emailAddress = process.env.MAIL_USER;
+const emailPassword = process.env.MAIL_PASS;
+
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
 
@@ -52,8 +56,8 @@ function sendMail(recipient_email, sender_name, package_id) {
     port: 465,
     secure: true, // use SSL
     auth: {
-      user: "anjimeneziscool@gmail.com",
-      pass: "", // need to put in your own email and password for it to work, just took it out for now so i don't push my personal info onto github
+      user: emailAddress,
+      pass: emailPassword,
     },
   });
 
@@ -67,9 +71,9 @@ function sendMail(recipient_email, sender_name, package_id) {
   });
 
   var message = {
-    from: "anjimeneziscool@gmail.com",
+    from: '"Open When..."'.concat(emailAddress),
     to: recipient_email,
-    subject: "Open When: You Received a Package from ".concat(sender_name),
+    subject: "You Received a Package from ".concat(sender_name).concat("!"),
     text: "Go to www.openwhen.com and type in the following package ID to receive your package: ".concat(
       package_id
     ),
