@@ -26,8 +26,8 @@ class WriteLetters extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    //   for each letter, we want to submit it to the database using handleSubmit function from Letter object (which is not possible)
-    this.state.letter_list.map((letter) => letter.handleSubmit);
+    // //   for each letter, we want to submit it to the database using handleSubmit function from Letter object (which is not possible)
+    // this.state.letter_list.map((letter) => letter.handleSubmit);
 
     this.setState({
       letter_list: "",

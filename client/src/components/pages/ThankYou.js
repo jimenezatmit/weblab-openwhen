@@ -13,7 +13,7 @@ class ThankYou extends Component {
     return (
       <>
         <h1 className="Thank-title u-textCenter">
-          Thank you for using Open When! Your letter have been sent.
+          Thank you for using Open When! Your letter has been sent.
         </h1>
         <div className="buttonContainer">
           <button type="button" className="Thank-button Thank-description">

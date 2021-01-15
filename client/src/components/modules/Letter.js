@@ -54,6 +54,14 @@ class Letter extends Component {
 
     post("/api/letter", body);
 
+    const message = {
+      package_id: this.props.packageID,
+      recipient_email: "jimeneza@mit.edu",
+      sender_name: "An Jimenez",
+    };
+
+    post("/api/email", message);
+
     this.setState({
       open_date: "",
       message: "",
