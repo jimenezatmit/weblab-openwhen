@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { post } from "../../utilities.js";
+
 const GOOGLE_CLIENT_ID = "158742950516-7n744r6o2q6mrvfiel2i1lrgno87rucv.apps.googleusercontent.com";
 
 import "./NavBar.css";
 
 /**
- * The navigation bar at the top of all pages. Takes no props.
+ * The navigation bar at the top of all pages.
+ *
+ * @param handleLogin (function)
+ * @param handleLogout (function)
+ * @param {number} userID
  */
 class NavBar extends Component {
   constructor(props) {
@@ -15,24 +21,6 @@ class NavBar extends Component {
       loggedIn: false,
     };
   }
-
-  handleLogin = (res) => {
-    // 'res' contains the response from Google's authentication servers
-    console.log(res);
-
-    this.setState({ loggedIn: true });
-    const userToken = res.tokenObj.id_token;
-    post("/api/login", { token: userToken }).then((user) => {
-      // the server knows we're logged in now
-      console.log(user);
-    });
-  };
-
-  handleLogout = () => {
-    console.log("Logged out successfully!");
-    this.setState({ loggedIn: false });
-    post("/api/logout");
-  };
 
   render() {
     return (
@@ -48,10 +36,10 @@ class NavBar extends Component {
             read
           </Link>
           {this.props.userId ? (
-            <GoogleLogout //minor thing but in my dream world we would round the corners of this button too
+            <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
-              buttonText="Logout" //doesn't actually show this currently :( always says login
-              onLogoutSuccess={this.handleLogout}
+              buttonText="Logout"
+              onLogoutSuccess={this.props.handleLogout}
               onFailure={(err) => console.log(err)}
               className="NavBar-link NavBar-login "
             />
@@ -59,7 +47,7 @@ class NavBar extends Component {
             <GoogleLogin
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Login"
-              onSuccess={this.handleLogin}
+              onSuccess={this.props.handleLogin}
               onFailure={(err) => console.log(err)}
               className=" NavBar-link NavBar-login"
             />

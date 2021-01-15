@@ -56,14 +56,12 @@ class App extends Component {
     return (
       <>
         {/* put in div and fixed height, 100%-72 pixels */}
-        <NavBar />
+        <NavBar
+          handleLogin={this.handleLogin}
+          handleLogout={this.handleLogout}
+          userId={this.state.userId}
+        />
         <Router>
-          {/* <Skeleton
-            path="/"
-            handleLogin={this.handleLogin}
-            handleLogout={this.handleLogout}
-            userId={this.state.userId}
-          /> */}
           <NotFound default />
           <Home path="/" />
           <Create path="/create/" />

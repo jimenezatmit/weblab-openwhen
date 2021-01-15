@@ -98,40 +98,40 @@ router.all("*", (req, res) => {
 
 module.exports = router;
 
-async function main() {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // use SSL
-    auth: {
-      user: "anjimeneziscool@gmail.com",
-      pass: "", // need to put in your own email and password for it to work, just took it out for now so i don't push my personal info onto github
-    },
-  });
+// async function main() {
+//   const transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true, // use SSL
+//     auth: {
+//       user: "anjimeneziscool@gmail.com",
+//       pass: "", // need to put in your own email and password for it to work, just took it out for now so i don't push my personal info onto github
+//     },
+//   });
 
-  // verify connection configuration
-  transporter.verify(function (error, success) {
-    if (error) {
-      console.log("ERROR!", error);
-    } else {
-      console.log("Server is ready to take our messages");
-    }
-  });
+//   // verify connection configuration
+//   transporter.verify(function (error, success) {
+//     if (error) {
+//       console.log("ERROR!", error);
+//     } else {
+//       console.log("Server is ready to take our messages");
+//     }
+//   });
 
-  var message = {
-    from: "anjimeneziscool@gmail.com",
-    to: "jimeneza@mit.edu",
-    subject: "HIHIHI",
-    text: "Plaintext version of the message",
-    html: "<p>HTML version of the message</p>",
-  };
+//   var message = {
+//     from: "anjimeneziscool@gmail.com",
+//     to: "jimeneza@mit.edu",
+//     subject: "HIHIHI",
+//     text: "Plaintext version of the message",
+//     html: "<p>HTML version of the message</p>",
+//   };
 
-  transporter.sendMail(message, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", message.messageId);
-  });
-}
+//   transporter.sendMail(message, (error, info) => {
+//     if (error) {
+//       return console.log(error);
+//     }
+//     console.log("Message sent: %s", message.messageId);
+//   });
+// }
 
-main().catch(console.error);
+// main().catch(console.error);
