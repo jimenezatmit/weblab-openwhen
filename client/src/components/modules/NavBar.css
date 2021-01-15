@@ -3,12 +3,9 @@
   background-color: var(--lightpurple);
   position: sticky;
   top: 0;
-}
 
-.NavBar-tabContainer {
   display: flex;
   justify-content: space-evenly;
-  padding: var(--s) var(--m);
   align-items: center;
 }
 
