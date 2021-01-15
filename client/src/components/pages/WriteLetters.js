@@ -8,9 +8,9 @@ import "./WriteLetters.css";
 class WriteLetters extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      letter_list: [<Letter packageID="DUMMY ID" />],
-    };
+    // this.state = {
+    //   letter_list: [<Letter packageID="DUMMY ID" />],
+    // };
   }
 
   componentDidMount() {
