@@ -24,9 +24,8 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 
-// get user and password for OPEN WHEN email
-const emailAddress = process.env.MAIL_USER;
-const emailPassword = process.env.MAIL_PASS;
+//use nodemailer
+const nodemailer = require("nodemailer");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -47,47 +46,6 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
-// takes in recipient email, sender name, and package ID and sends automatic email to recipient
-function sendMail(recipient_email, sender_name, package_id) {
-  const nodemailer = require("nodemailer");
-
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // use SSL
-    auth: {
-      user: emailAddress,
-      pass: emailPassword,
-    },
-  });
-
-  // verify connection configuration
-  transporter.verify(function (error, success) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Server is ready to take our messages");
-    }
-  });
-
-  var message = {
-    from: '"Open When..."'.concat(emailAddress),
-    to: recipient_email,
-    subject: "You Received a Package from ".concat(sender_name).concat("!"),
-    text: "Go to www.openwhen.com and type in the following package ID to receive your package: ".concat(
-      package_id
-    ),
-    // html: "<p>HTML version of the message</p>",
-  };
-
-  transporter.sendMail(message, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", message.messageId);
-  });
-}
-
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
@@ -97,6 +55,8 @@ router.post("/letter", (req, res) => {
     open_date: req.body.open_date,
     message: req.body.message,
     package_id: req.body.package_id,
+    // recipient_email: req.body.recipient_email,
+    // sender_name: req.body.sender_name,
     prompt: req.body.prompt,
     has_sent: req.body.has_sent,
   });
@@ -105,11 +65,6 @@ router.post("/letter", (req, res) => {
     .save()
     .then((letter) => res.send(letter))
     .then(() => console.log(newLetter));
-});
-
-router.post("/email", (req, res) => {
-  sendMail(req.body.recipient_email, req.body.sender_name, req.body.package_id);
-  console.log("email sent!");
 });
 
 //attempting post package
@@ -128,18 +83,20 @@ router.post("/package", (req, res) => {
     .then(() => console.log(newPackage));
 });
 
-//trying to add get for package and letter
+//trying to add get for package and letter 1/15
 router.get("/package", (req, res) => {
   Package.find({ package_id: req.query.package_id }).then((package) => {
     res.send(package);
   });
 });
-
 router.get("/letter", (req, res) => {
   Letter.find({ package_id: req.query.package_id }).then((letters) => {
     res.send(letters);
   });
 });
+
+
+
 
 //pasted in from catbook
 router.get("/user", (req, res) => {
@@ -155,3 +112,41 @@ router.all("*", (req, res) => {
 });
 
 module.exports = router;
+
+// async function main() {
+//   const transporter = nodemailer.createTransport({
+//     host: "smtp.gmail.com",
+//     port: 465,
+//     secure: true, // use SSL
+//     auth: {
+//       user: "anjimeneziscool@gmail.com",
+//       pass: "", // need to put in your own email and password for it to work, just took it out for now so i don't push my personal info onto github
+//     },
+//   });
+
+//   // verify connection configuration
+//   transporter.verify(function (error, success) {
+//     if (error) {
+//       console.log("ERROR!", error);
+//     } else {
+//       console.log("Server is ready to take our messages");
+//     }
+//   });
+
+//   var message = {
+//     from: "anjimeneziscool@gmail.com",
+//     to: "jimeneza@mit.edu",
+//     subject: "HIHIHI",
+//     text: "Plaintext version of the message",
+//     html: "<p>HTML version of the message</p>",
+//   };
+
+//   transporter.sendMail(message, (error, info) => {
+//     if (error) {
+//       return console.log(error);
+//     }
+//     console.log("Message sent: %s", message.messageId);
+//   });
+// }
+
+// main().catch(console.error);

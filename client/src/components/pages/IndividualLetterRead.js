@@ -16,15 +16,16 @@ class IndividualLetterRead extends Component {
   render() {
     return (
         <>
-        <h2 className = "IndividualLetterRead-prompt"> open when you've finished your website... </h2>
+        <h2 className = "IndividualLetterRead-prompt"> {this.props.prompt} </h2>
         <div className = "IndividualLetterRead-body">
             <h3>
-                Dear An, <br></br>
+                {/* Dear An, <br></br>
                 <p></p>
                 I'm so happy to have worked with you on this website. Huevita es para siempre :) <br></br>
                 <p></p>
                 With love,<br></br>
-                Kate
+                Kate */}
+                {this.props.message}
             </h3>
         </div>
 

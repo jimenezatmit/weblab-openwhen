@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 import { Router } from "@reach/router";
 import { navigate } from "@reach/router";
 import { post } from "../../utilities.js";
+import { get } from "../../utilities";
+import Envelopes from "./Envelopes.js";
 
 import "../../utilities.css";
 import "./Read.css";
@@ -16,9 +18,15 @@ class Read extends Component {
     this.state  = {
         package_id: "",
         sender_name:  "",
+        // letterList : [],
     }
   }
 
+//   addLetter = (letter) => {
+//     this.setState({
+//         letterList: this.state.letterList.concat([letter]),
+//     })
+//   }
 
   // called whenever the user types in the recipient input field
   // updates the field that has changed
@@ -47,6 +55,7 @@ class Read extends Component {
       sender_name: package1.sender_name,
       package_id: package1.package_id,
     }));
+    // <Envelopes sender_name = {this.state.sender_name} package_id = {this.state.package_id} />
   };
 
   //need to figure out how to pass sender_name and package_id as props to next page with letters
@@ -54,9 +63,11 @@ class Read extends Component {
     return (
       <>
       <div>
+        <h1 className="Create-title u-textCenter">Read</h1>
+        <div id="subHeading">unwrap your package of letters!</div>
           <form className="u-textCenter">
             <label className="Create-description" htmlFor="code">
-              enter package id code from email
+              package code from email
             </label>
             <br></br>
             <input
@@ -78,8 +89,8 @@ class Read extends Component {
             className="Create-button Create-subDescription"
             onClick={this.handleSubmit}
           >
-            <Link to="/letter/" className="Create-link">
-              get letters
+            <Link to="/envelopes/" className="Create-link">
+              see letters
             </Link>
           </button>
         </div>

@@ -1,0 +1,11 @@
+.Envelope-centered {
+  text-align: center;
+}
+.Envelope-Blue {
+  color: var(--tealblue);
+}
+
+.Envelope-prompt {
+  text-align: center;
+  margin: var(--s) var(--s);
+}

@@ -7,10 +7,3 @@
   text-align: center;
   margin: var(--s) var(--s);
 }
-
-.Read-envelopeCentered {
-  text-align: center;
-}
-.Read-envelopeBlue {
-  color: var(--tealblue);
-}
