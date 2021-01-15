@@ -83,6 +83,22 @@ router.post("/package", (req, res) => {
     .then(() => console.log(newPackage));
 });
 
+//trying to add get for package and letter
+router.get("/package", (req, res) => {
+  Package.find({ package_id: req.query.package_id }).then((package) => {
+    res.send(package);
+  });
+});
+
+router.get("/letter", (req, res) => {
+  Letter.find({ package_id: req.query.package_id }).then((letters) => {
+    res.send(letters);
+  });
+});
+
+
+
+
 //pasted in from catbook
 router.get("/user", (req, res) => {
   User.findById(req.query.userid).then((user) => {
