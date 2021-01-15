@@ -7,11 +7,18 @@ import "./Home.css";
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
+  }
+
+  componentDidMount() {
+    document.title = "Home Page";
+    this.myRef.current.scrollTo(0, 0);
   }
 
   render() {
     return (
       <>
+        <div ref={this.myRef}></div>
         <h1 className="Home-title u-textCenter">open when...</h1>
         <div className="Home-description">
           send a package of virtual letters for special moments in their life (or another

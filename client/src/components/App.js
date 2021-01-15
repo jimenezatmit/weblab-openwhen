@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
 
 import NavBar from "./modules/NavBar.js";
 import Home from "./pages/Home.js";
@@ -61,6 +60,7 @@ class App extends Component {
           handleLogout={this.handleLogout}
           userId={this.state.userId}
         />
+
         <Router>
           <NotFound default />
           <Home path="/" />
