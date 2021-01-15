@@ -17,11 +17,11 @@ class WriteLetters extends Component {
     document.title = "Write Letters Page";
   }
 
-  addLetter = (event) => {
-    this.setState({
-      letter_list: this.state.letter_list.concat(<Letter packageID="DUMMY ID" />),
-    });
-  };
+  //   addLetter = (event) => {
+  //     this.setState({
+  //       letter_list: this.state.letter_list.concat(<Letter packageID="DUMMY ID" />),
+  //     });
+  //   };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -45,15 +45,16 @@ class WriteLetters extends Component {
           choose a prompt, choose an open when date, and write a letter to your recipient
         </div>
 
-        {this.state.letter_list}
+        {/* {this.state.letter_list} */}
+        <Letter packageID="DUMMY ID" />
 
-        <div className="u-textCenter">
+        {/* <div className="u-textCenter">
           <button type="button" className="Create-button" onClick={this.addLetter}>
             add another letter
           </button>
-        </div>
+        </div> */}
 
-        <div className="u-textCenter">
+        {/* <div className="u-textCenter">
           <button
             type="button"
             className="Create-button Create-subDescription"
@@ -63,7 +64,7 @@ class WriteLetters extends Component {
               send letters!
             </Link>
           </button>
-        </div>
+        </div> */}
       </>
     );
   }

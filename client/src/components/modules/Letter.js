@@ -46,8 +46,6 @@ class Letter extends Component {
       open_date: this.state.open_date,
       message: this.state.message,
       package_id: this.props.packageID,
-      // recipient_email: this.props.recipientEmail,
-      // sender_name: this.props.senderName,
       prompt: this.state.prompt,
       has_sent: this.state.has_sent,
     };
@@ -117,7 +115,7 @@ class Letter extends Component {
           </form>
         </div>
 
-        {/* <div className="u-textCenter">
+        <div className="u-textCenter">
           <button
             type="button"
             className="Create-button Create-subDescription"
@@ -127,9 +125,9 @@ class Letter extends Component {
               send letter!
             </Link>
           </button>
-        </div> */}
+        </div>
 
-        <hr />
+        {/* <hr /> */}
       </>
     );
   }
