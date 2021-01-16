@@ -23,7 +23,7 @@ class ThankYou extends Component {
           </button>
 
           <button type="button" className="Thank-button Thank-description">
-            <Link to="/writeletters" className="Thank-link">
+            <Link to={`/writeletters/${this.props.package_id}`} className="Thank-link">
               send another letter
             </Link>
           </button>

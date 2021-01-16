@@ -3,6 +3,8 @@ import Letter from "./Letter.js";
 import { Link } from "@reach/router";
 import { post } from "../../utilities.js";
 
+import { navigate } from "@reach/router";
+
 import "./Package.css";
 
 /**
@@ -42,7 +44,10 @@ class Package extends Component {
 
     console.log(body);
 
-    post("/api/package", body);
+    post("/api/package", body).then((packageObj) => {
+      navigate(`/writeletters/${packageObj._id}`);
+      // this.props.location.state
+    });
 
     this.setState({
       sender_name: "",
@@ -93,9 +98,7 @@ class Package extends Component {
             className="Create-button Create-subDescription"
             onClick={this.handleSubmit}
           >
-            <Link to="/writeletters" className="Create-link">
-              next
-            </Link>
+            next
           </button>
         </div>
       </>
@@ -103,20 +106,3 @@ class Package extends Component {
   }
 }
 export default Package;
-
-// componentDidMount() {
-//   get("/api/package").then((package) => {
-//     this.setState({
-//       package_id: package.package_id,
-//       sender_name: package.sender_name,
-//       recipient_email: package.recipient_email,
-//     });
-//   });
-// }
-
-// // figure out how to trigger
-// addLetterToPackage = (letterObj) => {
-//   this.setState({
-//     letter_ids: letter_ids.concat(letterObj._id),
-//   });
-// };

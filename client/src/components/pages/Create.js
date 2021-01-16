@@ -21,9 +21,6 @@ class Create extends Component {
         <h1 className="Create-title u-textCenter">Create</h1>
         <div id="subHeading">enter the fields below to get started!</div>
 
-        {/* {packageObj}
-        <Letter packageID={packageObj._id} /> */}
-
         <Package></Package>
       </>
     );

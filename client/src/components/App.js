@@ -9,7 +9,7 @@ import Read from "./pages/Read.js";
 import IndividualLetterRead from "./pages/IndividualLetterRead.js";
 import ThankYou from "./pages/ThankYou.js";
 import WriteLetters from "./pages/WriteLetters.js";
-import Envelopes from "./pages/Envelopes.js"
+import Envelopes from "./pages/Envelopes.js";
 
 import "../utilities.css";
 
@@ -67,10 +67,10 @@ class App extends Component {
           <Home path="/" />
           <Create path="/create/" />
           <Read path="/read/" />
-          <Envelopes path  =  "/envelopes/"/>
+          <Envelopes path="/envelopes/" />
           <IndividualLetterRead path="/letter/" />
-          <ThankYou path="/thankyou/" />
-          <WriteLetters path="/writeletters" />
+          <ThankYou path="/thankyou/:package_id" />
+          <WriteLetters path="/writeletters/:package_id" />
         </Router>
       </>
     );

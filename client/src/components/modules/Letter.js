@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 
 import "../../utilities.css";
 import "./Letter.css";
-import { post } from "../../utilities.js";
+import { post, get } from "../../utilities.js";
 
 /**
  * Letter is a component for holding message and creator/recipient
  *
  * Proptypes (?)
- * @param {number} packageID
-//  * @param {string} senderName
-//  * @param {string} recipientEmail
+ * @param {string} package_id
  */
 
 class Letter extends Component {
@@ -22,7 +21,8 @@ class Letter extends Component {
       message: "",
       package_id: "",
       prompt: "",
-      has_sent: false,
+      sender_name: "",
+      recipient_email: "",
     };
   }
 
@@ -45,29 +45,43 @@ class Letter extends Component {
     const body = {
       open_date: this.state.open_date,
       message: this.state.message,
-      package_id: this.props.packageID,
+      package_id: this.props.package_id,
       prompt: this.state.prompt,
-      has_sent: this.state.has_sent,
     };
 
     console.log(body);
 
-    post("/api/letter", body);
+    post("/api/letter", body)
+      .then(async () => {
+        const packageObj = await get("/api/package", { package_id: this.props.package_id });
 
-    const message = {
-      package_id: this.props.packageID,
-      recipient_email: "jimeneza@mit.edu",
-      sender_name: "An Jimenez",
-    };
+        console.log(packageObj);
 
-    post("/api/email", message);
+        this.setState({
+          recipient_email: packageObj.recipient_email,
+          sender_name: packageObj.sender_name,
+        });
+      })
+      .then(() => {
+        console.log(this.state.recipient_email);
+
+        post("/api/email", {
+          recipient_email: this.state.recipient_email,
+          sender_name: this.state.sender_name,
+          package_id: this.props.package_id,
+        });
+
+        console.log("aaaa");
+        navigate(`/thankyou/${this.props.package_id}`);
+      });
 
     this.setState({
       open_date: "",
       message: "",
       package_id: "",
       prompt: "",
-      has_sent: false,
+      recipient_email: "",
+      sender_name: "",
     });
   };
 
@@ -129,9 +143,10 @@ class Letter extends Component {
             className="Create-button Create-subDescription"
             onClick={this.handleSubmit}
           >
-            <Link to="/thankyou" className="Create-link">
+            send letter!
+            {/* <Link to="/thankyou" className="Create-link">
               send letter!
-            </Link>
+            </Link> */}
           </button>
         </div>
 

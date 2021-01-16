@@ -46,25 +46,7 @@ class WriteLetters extends Component {
         </div>
 
         {/* {this.state.letter_list} */}
-        <Letter packageID="DUMMY ID" />
-
-        {/* <div className="u-textCenter">
-          <button type="button" className="Create-button" onClick={this.addLetter}>
-            add another letter
-          </button>
-        </div> */}
-
-        {/* <div className="u-textCenter">
-          <button
-            type="button"
-            className="Create-button Create-subDescription"
-            onClick={this.handleSubmit}
-          >
-            <Link to="/thankyou" className="Create-link">
-              send letters!
-            </Link>
-          </button>
-        </div> */}
+        <Letter package_id={this.props.package_id} />
       </>
     );
   }
