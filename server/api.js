@@ -128,6 +128,12 @@ router.get("/package", (req, res) => {
 });
 
 router.get("/letter", (req, res) => {
+  Letter.findOne({ _id: req.query.letter_id }).then((letter) => {
+    res.send(letter);
+  });
+});
+
+router.get("/allletters", (req, res) => {
   Letter.find({ package_id: req.query.package_id }).then((letters) => {
     res.send(letters);
   });

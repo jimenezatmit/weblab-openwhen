@@ -67,8 +67,8 @@ class App extends Component {
           <Home path="/" />
           <Create path="/create/" />
           <Read path="/read/" />
-          <Envelopes path="/envelopes/" />
-          <IndividualLetterRead path="/letter/" />
+          <Envelopes path="/envelopes/:package_id" />
+          <IndividualLetterRead path="/letter/:letter_id" />
           <ThankYou path="/thankyou/:package_id" />
           <WriteLetters path="/writeletters/:package_id" />
         </Router>

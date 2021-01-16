@@ -4,29 +4,18 @@ import { Router } from "@reach/router";
 import { navigate } from "@reach/router";
 import { post } from "../../utilities.js";
 import { get } from "../../utilities";
-import Envelopes from "./Envelopes.js";
 
 import "../../utilities.css";
 import "./Read.css";
-import  "./Create.css";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import "./Create.css";
 
 class Read extends Component {
   constructor(props) {
     super(props);
-    this.state  = {
-        package_id: "",
-        sender_name:  "",
-        // letterList : [],
-    }
+    this.state = {
+      package_id: "",
+    };
   }
-
-//   addLetter = (letter) => {
-//     this.setState({
-//         letterList: this.state.letterList.concat([letter]),
-//     })
-//   }
 
   // called whenever the user types in the recipient input field
   // updates the field that has changed
@@ -38,6 +27,7 @@ class Read extends Component {
       [name]: value,
     });
   };
+
   //takes in input from form and uses that to query database to find package
   handleSubmit = (event) => {
     event.preventDefault();
@@ -49,22 +39,19 @@ class Read extends Component {
 
     console.log(body);
 
-    get("/api/package", body).then((package1) => 
-
+    get("/api/package", body).then((packageObj) => navigate(`/envelopes/${packageObj._id}`));
     this.setState({
-      sender_name: package1.sender_name,
-      package_id: package1.package_id,
-    }));
-    // <Envelopes sender_name = {this.state.sender_name} package_id = {this.state.package_id} />
+      package_id: "",
+    });
   };
 
   //need to figure out how to pass sender_name and package_id as props to next page with letters
   render() {
     return (
       <>
-      <div>
-        <h1 className="Create-title u-textCenter">Read</h1>
-        <div id="subHeading">unwrap your package of letters!</div>
+        <div>
+          <h1 className="Create-title u-textCenter">Read</h1>
+          <div id="subHeading">unwrap your package of letters!</div>
           <form className="u-textCenter">
             <label className="Create-description" htmlFor="code">
               package code from email
@@ -89,28 +76,12 @@ class Read extends Component {
             className="Create-button Create-subDescription"
             onClick={this.handleSubmit}
           >
-            <Link to="/envelopes/" className="Create-link">
-              see letters
-            </Link>
+            see letters
           </button>
         </div>
       </>
-      );
-    };
- };
+    );
+  }
+}
 
 export default Read;
-
-    //     /* <link
-    //       rel="stylesheet"
-    //       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
-    //       crossorigin="anonymous"
-    //     ></link>
-    //     <h1 className="u-textCenter"> Kate has sent you a letter!</h1>
-    //     <h2 className="Read-instruction"> Click on envelope to open </h2>
-    //     <div className="Read-envelopeCentered Read-envelopeBlue">
-    //       <i onClick={() => navigate("/letter/")} className="far fa-envelope fa-10x "></i> //
-    //       conditional with date
-    //     </div>
-    //     <h3 className="Read-prompt"> open when you've finished your website... </h3> */}
-    // //   </>  

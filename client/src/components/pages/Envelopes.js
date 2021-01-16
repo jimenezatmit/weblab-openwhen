@@ -8,82 +8,61 @@ import "../../utilities.css";
 import "./Read.css";
 import IndividualLetterRead from "./IndividualLetterRead.js";
 
-
 //passed letter obj info and renders it
 
 class Envelopes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-         letterList : [],
-        // open_dates : [],
-        // messages : [],
-        // prompts: []
-    }
+      letterList: [],
+    };
   }
 
-  componentDidMount(){
-      get("/api/letter", {package_id: "DUMMY ID"}).then((letters) => {
-        //   letters.map(( letter) =>  this.props.letterList(letter)),
-          letters.map((letter) => {
-              this.setState({
-                //   open_dates : this.state.open_dates.concat(letter.open_date), 
-                //   messages : this.state.messages.concat(letter.message),
-                //   prompts:  this.state.prompts.concat(letter.prompt)
-                letterList: this.state.letterList.concat([letter])
-              })
-          
-        console.log(this.state.letterList)
-      })
-
-    })
+  componentDidMount() {
+    get("/api/allletters", { package_id: this.props.package_id }).then((letters) => {
+      console.log(letters);
+      letters.map((letter) => {
+        this.setState({
+          letterList: this.state.letterList.concat([letter]),
+        });
+      });
+    });
   }
 
-  handleClick = ()=> {
-    navigate("/letter/");
-    <IndividualLetterRead
-        message = "Testing"
-        prompt =  "promting"
-    ></IndividualLetterRead>
-  }
+  // handleClick = () => {
+  //   const letter_id = event.target.message;
+  //   console.log(letter_id);
+  //   // get("/api/letter", { letter_id: letter_id }).then((letterObj) => {
+  //   //   navigate(`/letter/${letterObj._id}`);
+  //   // });
+  // };
 
   render() {
     return (
-        <>
-
-      <link
+      <>
+        <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></link>
         <h1 className="u-textCenter"> {this.props.sender_name} has sent you a letter!</h1>
         <h2 className="Read-instruction"> Click on envelope to open </h2>
-        {/* here we do something to get all letters (hopefully prop =  package_id, then do get("api/letter") 
-        and render each Envelope */}
-        
         <div>
-        {/* <Envelope message = "Hi there" open_date = "01/01/2021" prompt = "sample prompt" /> */}
-            {this.state.letterList.map((letter) => (
-                    <div>
-                        
-                    <Envelope 
-                        open_date = {letter.open_date}
-                        message  = {letter.message}
-                        prompt  = {letter.prompt}
-                        onClick = {this.handleClick}           
-                    ></Envelope>
-
-
-
-                    </div>
-
-            ))}
+          {/* <Envelope message = "Hi there" open_date = "01/01/2021" prompt = "sample prompt" /> */}
+          {this.state.letterList.map((letter) => (
+            <div>
+              <Envelope
+                open_date={letter.open_date}
+                message={letter.message}
+                prompt={letter.prompt}
+                letter_id={letter._id}
+                // onClick={this.handleClick}
+              ></Envelope>
+            </div>
+          ))}
         </div>
-            
-
-        </>
-    )
+      </>
+    );
   }
-
 }
 export default Envelopes;

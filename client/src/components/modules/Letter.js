@@ -71,7 +71,6 @@ class Letter extends Component {
           package_id: this.props.package_id,
         });
 
-        console.log("aaaa");
         navigate(`/thankyou/${this.props.package_id}`);
       });
 
