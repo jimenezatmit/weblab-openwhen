@@ -38,7 +38,7 @@ class IndividualLetterRead extends Component {
         </div>
 
         <div className="u-textCenter">
-          <button type="button" className="Create-button Create-subDescription">
+          <button type="button" className="Create-button">
             <Link to={`/envelopes/${this.state.package_id}`} className="Create-link">
               return to all letters
             </Link>

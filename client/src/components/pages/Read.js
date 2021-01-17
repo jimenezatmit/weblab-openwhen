@@ -73,7 +73,7 @@ class Read extends Component {
         <div className="u-textCenter">
           <button
             type="button"
-            className="Create-button Create-subDescription"
+            className="Create-button"
             onClick={this.handleSubmit}
           >
             see letters
