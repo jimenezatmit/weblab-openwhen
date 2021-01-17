@@ -1,7 +1,5 @@
-.Envelope-centered {
+.Envelope-centeredAndBlue {
   text-align: center;
-}
-.Envelope-Blue {
   color: var(--tealblue);
 }
 

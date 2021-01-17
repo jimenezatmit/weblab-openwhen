@@ -31,7 +31,7 @@ class Envelope extends Component {
           href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
           crossOrigin="anonymous"
         ></link>
-        <div className="Envelope-centered Envelope-blue">
+        <div className="Envelope-centeredAndBlue">
           <i onClick={this.handleClick} className="far fa-envelope fa-10x"></i>
           {/* figure out how to pass in letter detail as props to render that on IndiivdualLetterRead page. 
           need conditional with date for unlock also */}
