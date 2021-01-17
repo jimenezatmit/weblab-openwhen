@@ -70,7 +70,7 @@ function sendMail(recipient_email, sender_name, package_id) {
     from: process.env.MAIL_USER,
     to: recipient_email,
     subject: "Open When: You Received a Package from ".concat(sender_name),
-    text: "Go to https://openwhen.herokuapp.com/ and paste in the following package ID to receive your package: ".concat(
+    text: "Go to https://openwhen.herokuapp.com/read/ and paste in the following package ID to receive your package: ".concat(
       package_id
     ),
     // html: "<p>HTML version of the message</p>",
