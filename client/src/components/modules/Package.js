@@ -45,7 +45,7 @@ class Package extends Component {
     console.log(body);
 
     post("/api/package", body).then((packageObj) => {
-      navigate(`/writeletters/${packageObj._id}`);
+      navigate(`/writeletters/${packageObj._id}`, {state: {sender_name:  packageObj.sender_name}});
       // this.props.location.state
     });
 

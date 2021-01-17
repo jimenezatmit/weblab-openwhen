@@ -15,6 +15,7 @@ class Envelopes extends Component {
     super(props);
     this.state = {
       letterList: [],
+      sender_name: ""
     };
   }
 
@@ -24,10 +25,12 @@ class Envelopes extends Component {
       letters.map((letter) => {
         this.setState({
           letterList: this.state.letterList.concat([letter]),
+          sender_name:  letter.sender_name
         });
       });
     });
   }
+
 
   // handleClick = () => {
   //   const letter_id = event.target.message;
@@ -38,6 +41,7 @@ class Envelopes extends Component {
   // };
 
   render() {
+  
     return (
       <>
         <link
@@ -45,7 +49,10 @@ class Envelopes extends Component {
           href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
           crossOrigin="anonymous"
         ></link>
-        <h1 className="u-textCenter"> {this.props.sender_name} has sent you a letter!</h1>
+
+        <h1 className="u-textCenter"> 
+        {this.state.sender_name} sent you {this.state.letterList.length} {this.state.letterList.length > 1 ? 'letters!': 'letter!'}
+        </h1>
         <h2 className="Read-instruction"> Click on envelope to open </h2>
         <div>
           {/* <Envelope message = "Hi there" open_date = "01/01/2021" prompt = "sample prompt" /> */}

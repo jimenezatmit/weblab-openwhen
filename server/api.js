@@ -80,7 +80,7 @@ function sendMail(recipient_email, sender_name, package_id) {
     if (error) {
       return console.log(error);
     }
-    console.log("Message sent: %s", message.messageId);
+    console.log("Message sent: %s", message.text);
   });
 }
 
@@ -99,6 +99,7 @@ router.post("/letter", (req, res) => {
     message: req.body.message,
     package_id: req.body.package_id,
     prompt: req.body.prompt,
+    sender_name:  req.body.sender_name
   });
 
   newLetter

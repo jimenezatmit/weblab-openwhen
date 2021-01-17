@@ -6,6 +6,7 @@ const LetterSchema = new mongoose.Schema({
   message: String,
   package_id: String,
   prompt: String,
+  sender_name: String
 });
 
 // compile model from schema

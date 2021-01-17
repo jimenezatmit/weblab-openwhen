@@ -47,6 +47,7 @@ class Letter extends Component {
       message: this.state.message,
       package_id: this.props.package_id,
       prompt: this.state.prompt,
+      sender_name: this.props.sender_name
     };
 
     console.log(body);
