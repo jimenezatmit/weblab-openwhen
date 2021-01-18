@@ -14,17 +14,17 @@ class ThankYou extends Component {
     document.title = "Open When";
   }
 
-  handleAnotherLetter = () => {
-    navigate(`/writeletters/`, {
-      state: { package_id: this.props.package_id },
-    });
-  };
+  // handleAnotherLetter = () => {
+  //   navigate(`/writeletters/`, {
+  //     state: { package_id: this.props.package_id },
+  //   });
+  // };
 
   render() {
     return (
       <>
         <h1 className="Thank-title u-textCenter">
-          Thank you for using Open When! Your letter has been sent.
+          Thank you for using Open When! Your package has been sent.
         </h1>
         <div className="buttonContainer">
           <button type="button" className="Thank-button Thank-description">
@@ -33,13 +33,6 @@ class ThankYou extends Component {
             </Link>
           </button>
 
-          <button
-            type="button"
-            className="Thank-button Thank-description"
-            onClick={this.handleAnotherLetter}
-          >
-            send another letter
-          </button>
 
           <button type="button" className="Thank-button Thank-description">
             <Link to="/create" className="Thank-link">

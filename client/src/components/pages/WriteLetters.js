@@ -8,6 +8,11 @@ import "./WriteLetters.css";
 class WriteLetters extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      // package_id : this.props.location.state.package_id,
+      // sender_name: this.props.location.state.sender_name,
+      // recipient_email :  this.props.location.state.recipient_email
+    }
     // this.state = {
     //   letter_list: [<Letter packageID="DUMMY ID" />],
     // };
@@ -34,6 +39,8 @@ class WriteLetters extends Component {
     });
   };
 
+
+
   render() {
     //   there has to be a cleaner way of doing this line below -an
     // let letterList = this.state.letter_count.map((count) => <Letter packageID="DUMMY ID" />);
@@ -49,7 +56,12 @@ class WriteLetters extends Component {
         <Letter
           package_id={this.props.location.state.package_id}
           sender_name={this.props.location.state.sender_name}
+          recipient_email={this.props.location.state.recipient_email}
         />
+
+
+          
+        
       </>
     );
   }

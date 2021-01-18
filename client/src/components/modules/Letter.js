@@ -26,9 +26,9 @@ class Letter extends Component {
     };
   }
 
-  validatePrompt = (prompt) => {
-    return String(prompt).toLowerCase().startsWith("open when ");
-  };
+//   validatePrompt = (prompt) => {
+//     return String(prompt).toLowerCase().startsWith("open when ");
+//   };
 
   validateDate = (date) => {
     const re = /^\d{2}\/\d{2}\/\d{4}$/;
@@ -50,13 +50,12 @@ class Letter extends Component {
     });
   };
 
-  // called when the user hits "send letters!" to send letters
   handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     let ready = false;
     if (
-      this.validatePrompt(this.state.prompt) &&
+    //   this.validatePrompt(this.state.prompt) &&
       this.validateDate(this.state.open_date) &&
       this.validateMessage(this.state.message)
     ) {
@@ -64,6 +63,7 @@ class Letter extends Component {
     }
 
     if (!ready) {
+        // problem is this only logs it in console but not to user
       console.log("Please complete the required fields before submitting.");
     } else {
       // fields that we would save into api
@@ -78,40 +78,67 @@ class Letter extends Component {
       console.log(body);
 
       post("/api/letter", body)
-        .then(async () => {
-          const packageObj = await get("/api/package", { package_id: this.props.package_id });
+        .then(() =>  {
+            console.log("letter to database");
+            this.setState({
+                open_date: "",
+                message: "",
+                package_id: "",
+                prompt: "",
+                recipient_email: "",
+                sender_name: "",
+              });
+            <Letter package_id = {this.props.package_id}  sender_name = {this.props.sender_name} recipient_email = {this.props.sender_name} />
+        }
+            
+        );
 
-          console.log(packageObj);
-
-          this.setState({
-            recipient_email: packageObj.recipient_email,
-            sender_name: packageObj.sender_name,
-          });
-        })
-        .then(() => {
-          console.log(this.state.recipient_email);
-
-          post("/api/email", {
-            recipient_email: this.state.recipient_email,
-            sender_name: this.state.sender_name,
-            package_id: this.props.package_id,
-          });
-
-          navigate(`/thankyou/`, {
-            state: { package_id: this.props.package_id },
-          });
-        });
-
-      this.setState({
-        open_date: "",
-        message: "",
-        package_id: "",
-        prompt: "",
-        recipient_email: "",
-        sender_name: "",
-      });
+      
     }
   };
+
+  handleFinalSubmit = (event) => {
+    event.preventDefault();
+    // this.handleSubmit();
+    let ready = false;
+    if (
+    //   this.validatePrompt(this.state.prompt) &&
+      this.validateDate(this.state.open_date) &&
+      this.validateMessage(this.state.message)
+    ) {
+      ready = true;
+    }
+
+    if (!ready) {
+        // problem is this only logs it in console but not to user
+      console.log("Please complete the required fields before submitting.");
+    } 
+    else {
+      // fields that we would save into api
+      const body = {
+        open_date: this.state.open_date,
+        message: this.state.message,
+        package_id: this.props.package_id,
+        prompt: this.state.prompt,
+        sender_name: this.props.sender_name,
+      };
+
+      console.log(body);
+
+        post("/api/letter", body).then(console.log("letter send to database"));
+    
+    const body2 = {
+        recipient_email: this.props.recipient_email,
+        sender_name: this.props.sender_name,
+        package_id: this.props.package_id,
+        };
+    console.log("before email post")
+    post("/api/email", body2).then(navigate(`/thankyou/`));
+    console.log("after email post")
+    
+    };
+    }
+
 
   render() {
     return (
@@ -170,9 +197,16 @@ class Letter extends Component {
 
         <div className="u-textCenter">
           <button type="button" className="Create-button" onClick={this.handleSubmit}>
-            send letter!
+            create another letter
           </button>
         </div>
+        <br></br>
+        <div className="u-textCenter">
+          <button type="button" className="Create-button" onClick={this.handleFinalSubmit}>
+            all done, send package
+          </button>
+        </div>
+        
       </>
     );
   }
