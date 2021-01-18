@@ -15,22 +15,22 @@ class Envelopes extends Component {
     super(props);
     this.state = {
       letterList: [],
-      sender_name: ""
+      sender_name: "",
     };
   }
 
   componentDidMount() {
+    document.title = "Open When: Read";
     get("/api/allletters", { package_id: this.props.package_id }).then((letters) => {
       console.log(letters);
       letters.map((letter) => {
         this.setState({
           letterList: this.state.letterList.concat([letter]),
-          sender_name:  letter.sender_name
+          sender_name: letter.sender_name,
         });
       });
     });
   }
-
 
   // handleClick = () => {
   //   const letter_id = event.target.message;
@@ -41,7 +41,6 @@ class Envelopes extends Component {
   // };
 
   render() {
-  
     return (
       <>
         <link
@@ -50,8 +49,9 @@ class Envelopes extends Component {
           crossOrigin="anonymous"
         ></link>
 
-        <h1 className="u-textCenter"> 
-        {this.state.sender_name} sent you {this.state.letterList.length} {this.state.letterList.length > 1 ? 'letters!': 'letter!'}
+        <h1 className="u-textCenter">
+          {this.state.sender_name} sent you {this.state.letterList.length}{" "}
+          {this.state.letterList.length > 1 ? "letters!" : "letter!"}
         </h1>
         <h2 className="Read-instruction"> Click on envelope to open </h2>
         <div>

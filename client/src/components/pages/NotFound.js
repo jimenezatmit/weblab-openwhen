@@ -5,6 +5,10 @@ class NotFound extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    document.title = "Not Found";
+  }
+
   render() {
     return (
       <div>

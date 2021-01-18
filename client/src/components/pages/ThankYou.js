@@ -9,6 +9,10 @@ class ThankYou extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    document.title = "Open When";
+  }
+
   render() {
     return (
       <>

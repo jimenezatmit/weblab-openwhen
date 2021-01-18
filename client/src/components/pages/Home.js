@@ -10,7 +10,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    document.title = "Home Page";
+    document.title = "Open When";
   }
 
   render() {

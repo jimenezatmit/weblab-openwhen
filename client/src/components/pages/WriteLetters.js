@@ -14,7 +14,7 @@ class WriteLetters extends Component {
   }
 
   componentDidMount() {
-    document.title = "Write Letters Page";
+    document.title = "Open When: Create";
   }
 
   //   addLetter = (event) => {
@@ -46,7 +46,10 @@ class WriteLetters extends Component {
         </div>
 
         {/* {this.state.letter_list} */}
-        <Letter package_id={this.props.package_id} sender_name={this.props.location.state.sender_name} />
+        <Letter
+          package_id={this.props.package_id}
+          sender_name={this.props.location.state.sender_name}
+        />
       </>
     );
   }

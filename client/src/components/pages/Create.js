@@ -12,7 +12,7 @@ class Create extends Component {
   }
 
   componentDidMount() {
-    document.title = "Create Page";
+    document.title = "Open When: Create";
   }
 
   render() {

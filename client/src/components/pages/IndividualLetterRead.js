@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { get } from "../../utilities";
-import moment from 'moment'
+import moment from "moment";
 
 import "../../utilities.css";
 import "./IndividualLetterRead.css";
@@ -18,7 +18,7 @@ class IndividualLetterRead extends Component {
   }
 
   componentDidMount() {
-    document.title = "Letter Read Page";
+    document.title = "Open When: Read";
 
     get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
       this.setState({
@@ -34,7 +34,13 @@ class IndividualLetterRead extends Component {
       <>
         <h2 className="IndividualLetterRead-prompt"> {this.state.prompt} </h2>
         <div className="IndividualLetterRead-body">
-          <h3>{this.props.location.state.open_date  <= moment().format('MM/DD/YYYY') ? this.state.message : 'Letter not unlocked until '.concat(this.props.location.state.open_date).concat(". Check back then!")}</h3>
+          <h3>
+            {this.props.location.state.open_date <= moment().format("MM/DD/YYYY")
+              ? this.state.message
+              : "Letter not unlocked until "
+                  .concat(this.props.location.state.open_date)
+                  .concat(". Check back then!")}
+          </h3>
         </div>
 
         <div className="u-textCenter">

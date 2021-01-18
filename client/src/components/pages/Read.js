@@ -17,6 +17,10 @@ class Read extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Open When: Read";
+  }
+
   // called whenever the user types in the recipient input field
   // updates the field that has changed
   handleChange = (event) => {
@@ -71,11 +75,7 @@ class Read extends Component {
         </div>
 
         <div className="u-textCenter">
-          <button
-            type="button"
-            className="Create-button"
-            onClick={this.handleSubmit}
-          >
+          <button type="button" className="Create-button" onClick={this.handleSubmit}>
             see letters
           </button>
         </div>
