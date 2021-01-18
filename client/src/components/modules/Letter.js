@@ -97,7 +97,9 @@ class Letter extends Component {
             package_id: this.props.package_id,
           });
 
-          navigate(`/thankyou/${this.props.package_id}`);
+          navigate(`/thankyou/`, {
+            state: { package_id: this.props.package_id },
+          });
         });
 
       this.setState({

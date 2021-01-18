@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 
 import "../../utilities.css";
 import "./ThankYou.css";
@@ -12,6 +13,12 @@ class ThankYou extends Component {
   componentDidMount() {
     document.title = "Open When";
   }
+
+  handleAnotherLetter = () => {
+    navigate(`/writeletters/`, {
+      state: { package_id: this.props.package_id },
+    });
+  };
 
   render() {
     return (
@@ -26,10 +33,12 @@ class ThankYou extends Component {
             </Link>
           </button>
 
-          <button type="button" className="Thank-button Thank-description">
-            <Link to={`/writeletters/${this.props.package_id}`} className="Thank-link">
-              send another letter
-            </Link>
+          <button
+            type="button"
+            className="Thank-button Thank-description"
+            onClick={this.handleAnotherLetter}
+          >
+            send another letter
           </button>
 
           <button type="button" className="Thank-button Thank-description">

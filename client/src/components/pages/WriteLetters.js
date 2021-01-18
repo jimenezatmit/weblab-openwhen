@@ -47,7 +47,7 @@ class WriteLetters extends Component {
 
         {/* {this.state.letter_list} */}
         <Letter
-          package_id={this.props.package_id}
+          package_id={this.props.location.state.package_id}
           sender_name={this.props.location.state.sender_name}
         />
       </>
