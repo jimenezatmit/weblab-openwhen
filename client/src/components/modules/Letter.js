@@ -26,6 +26,19 @@ class Letter extends Component {
     };
   }
 
+  validatePrompt = (prompt) => {
+    return String(prompt).toLowerCase().startsWith("open when ");
+  };
+
+  validateDate = (date) => {
+    const re = /^\d{2}\/\d{2}\/\d{4}$/;
+    return re.test(String(date));
+  };
+
+  validateMessage = (message) => {
+    return message.length > 1;
+  };
+
   // called whenever the user types in the recipient input field
   // updates the field that has changed
   handleChange = (event) => {
@@ -41,48 +54,61 @@ class Letter extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    // fields that we would save into api
-    const body = {
-      open_date: this.state.open_date,
-      message: this.state.message,
-      package_id: this.props.package_id,
-      prompt: this.state.prompt,
-      sender_name: this.props.sender_name
-    };
+    let ready = false;
+    if (
+      this.validatePrompt(this.state.prompt) &&
+      this.validateDate(this.state.open_date) &&
+      this.validateMessage(this.state.message)
+    ) {
+      ready = true;
+    }
 
-    console.log(body);
+    if (!ready) {
+      console.log("Please complete the required fields before submitting.");
+    } else {
+      // fields that we would save into api
+      const body = {
+        open_date: this.state.open_date,
+        message: this.state.message,
+        package_id: this.props.package_id,
+        prompt: this.state.prompt,
+        sender_name: this.props.sender_name,
+      };
 
-    post("/api/letter", body)
-      .then(async () => {
-        const packageObj = await get("/api/package", { package_id: this.props.package_id });
+      console.log(body);
 
-        console.log(packageObj);
+      post("/api/letter", body)
+        .then(async () => {
+          const packageObj = await get("/api/package", { package_id: this.props.package_id });
 
-        this.setState({
-          recipient_email: packageObj.recipient_email,
-          sender_name: packageObj.sender_name,
+          console.log(packageObj);
+
+          this.setState({
+            recipient_email: packageObj.recipient_email,
+            sender_name: packageObj.sender_name,
+          });
+        })
+        .then(() => {
+          console.log(this.state.recipient_email);
+
+          post("/api/email", {
+            recipient_email: this.state.recipient_email,
+            sender_name: this.state.sender_name,
+            package_id: this.props.package_id,
+          });
+
+          navigate(`/thankyou/${this.props.package_id}`);
         });
-      })
-      .then(() => {
-        console.log(this.state.recipient_email);
 
-        post("/api/email", {
-          recipient_email: this.state.recipient_email,
-          sender_name: this.state.sender_name,
-          package_id: this.props.package_id,
-        });
-
-        navigate(`/thankyou/${this.props.package_id}`);
+      this.setState({
+        open_date: "",
+        message: "",
+        package_id: "",
+        prompt: "",
+        recipient_email: "",
+        sender_name: "",
       });
-
-    this.setState({
-      open_date: "",
-      message: "",
-      package_id: "",
-      prompt: "",
-      recipient_email: "",
-      sender_name: "",
-    });
+    }
   };
 
   render() {
@@ -91,12 +117,13 @@ class Letter extends Component {
         <div>
           <form className="u-textCenter">
             <label className="Create-description" htmlFor="prompt">
-              prompt
+              prompt*
             </label>
             <div id="smallText">start your prompt with "open when"</div>
             <textarea
               className="Create-field"
               name="prompt"
+              required
               placeholder="open when _____"
               type="text"
               id="prompt"
@@ -106,12 +133,13 @@ class Letter extends Component {
             <br></br>
 
             <label className="Create-description" htmlFor="date">
-              open when date
+              open when date*
             </label>
             <div id="smallText">set date to 00/00/0000 for forever unlocked</div>
             <input
               className="Create-field"
               name="open_date"
+              required
               placeholder="MM/DD/YYYY"
               type="text"
               id="date"
@@ -121,12 +149,13 @@ class Letter extends Component {
             <br></br>
 
             <label className="Create-description" htmlFor="message">
-              message
+              message*
             </label>
             <br></br>
             <textarea
               className="Create-field"
               name="message"
+              required
               placeholder="write letter here"
               type="text"
               id="message"
@@ -138,71 +167,13 @@ class Letter extends Component {
         </div>
 
         <div className="u-textCenter">
-          <button
-            type="button"
-            className="Create-button"
-            onClick={this.handleSubmit}
-          >
+          <button type="button" className="Create-button" onClick={this.handleSubmit}>
             send letter!
-            {/* <Link to="/thankyou" className="Create-link">
-              send letter!
-            </Link> */}
           </button>
         </div>
-
-        {/* <hr /> */}
       </>
     );
   }
 }
 
 export default Letter;
-
-// /**
-//  * New Letter is a Letter component for new letters
-//  *
-//  * Proptypes
-//  * @param {string} creatorName
-//  * @param {string} letterID
-//  */
-
-// class NewLetter extends Component {
-//   addLetter = (value) => {
-//     const body = { parent: this.props.letterID, content: value };
-//     post("/api/letter", body).then((letter) => {
-//       this.props.addNewLetter(letter);
-//     });
-//   };
-
-//   render() {
-//     return <Letter onSubmit={this.addLetter} />;
-//   }
-// }
-
-// componentDidMount() {
-//   get("/api/letter", { parent: this.props._id }).then((letter) => {
-//     this.setState({
-//       message: letter.message,
-//       open_date: letter.open_date,
-//       _id: letter._id,
-//       recipient_email: letter.recipient_email,
-//       sender_name: letter.sender_name,
-//       prompt: letter.prompt,
-//     });
-//   });
-// }
-
-//   // this gets called when the user pushes "Submit", so their
-//   // letter gets added right away
-//   addNewLetter = (letterObj) => {
-//     this.setState({
-//       open_date: letterObj.open_date,
-//       message: letterObj.message,
-//       _id: letterObj._id,
-//       recipient_email: letterObj.recipient_email,
-//       sender_name: letterObj.sender_name,
-//       prompt: letterObj.prompt,
-//     });
-//   };
-
-//export default NewLetter;
