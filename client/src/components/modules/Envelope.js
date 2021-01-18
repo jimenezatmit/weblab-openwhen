@@ -19,7 +19,7 @@ class Envelope extends Component {
   handleClick = () => {
     // const letter_id = event.target.message;
     get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
-      navigate(`/letter/${letterObj._id}`, {state: {open_date: letterObj.open_date}});
+      navigate(`/letter/`, { state: { open_date: letterObj.open_date, letter_id: letterObj._id } });
     });
   };
 

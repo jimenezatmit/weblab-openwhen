@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { get } from "../../utilities";
 import moment from "moment";
+import { navigate } from "@reach/router";
 
 import "../../utilities.css";
 import "./IndividualLetterRead.css";
@@ -20,7 +21,7 @@ class IndividualLetterRead extends Component {
   componentDidMount() {
     document.title = "Open When: Read";
 
-    get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
+    get("/api/letter", { letter_id: this.props.location.state.letter_id }).then((letterObj) => {
       this.setState({
         prompt: letterObj.prompt,
         message: letterObj.message,
@@ -28,6 +29,12 @@ class IndividualLetterRead extends Component {
       });
     });
   }
+
+  handleReturn = () => {
+    navigate(`/envelopes/`, {
+      state: { package_id: this.state.package_id },
+    });
+  };
 
   render() {
     return (
@@ -44,10 +51,8 @@ class IndividualLetterRead extends Component {
         </div>
 
         <div className="u-textCenter">
-          <button type="button" className="Create-button">
-            <Link to={`/envelopes/${this.state.package_id}`} className="Create-link">
-              return to all letters
-            </Link>
+          <button type="button" className="Create-button" onClick={this.handleReturn}>
+            return to all letters
           </button>
         </div>
       </>

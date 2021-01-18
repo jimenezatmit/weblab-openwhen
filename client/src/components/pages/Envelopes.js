@@ -21,7 +21,7 @@ class Envelopes extends Component {
 
   componentDidMount() {
     document.title = "Open When: Read";
-    get("/api/allletters", { package_id: this.props.package_id }).then((letters) => {
+    get("/api/allletters", { package_id: this.props.location.state.package_id }).then((letters) => {
       console.log(letters);
       letters.map((letter) => {
         this.setState({
