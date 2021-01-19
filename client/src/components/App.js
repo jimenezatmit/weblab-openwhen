@@ -10,6 +10,7 @@ import IndividualLetterRead from "./pages/IndividualLetterRead.js";
 import ThankYou from "./pages/ThankYou.js";
 import WriteLetters from "./pages/WriteLetters.js";
 import Envelopes from "./pages/Envelopes.js";
+import HowItWorks from "./pages/HowItWorks.js";
 
 import "../utilities.css";
 
@@ -71,6 +72,7 @@ class App extends Component {
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
+          <HowItWorks path = "/howitworks/"/>
         </Router>
       </>
     );

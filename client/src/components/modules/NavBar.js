@@ -24,12 +24,17 @@ class NavBar extends Component {
         <Link to="/" className="NavBar-title NavBar-link u-bold">
           open when...
         </Link>
+        <Link to="/howitworks/" className="NavBar-link">
+          how it works
+        </Link>
         <Link to="/create/" className="NavBar-link">
           create
         </Link>
         <Link to="/read/" className="NavBar-link">
           read
         </Link>
+        
+
         {this.props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
