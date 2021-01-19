@@ -26,10 +26,6 @@ class Letter extends Component {
     };
   }
 
-//   validatePrompt = (prompt) => {
-//     return String(prompt).toLowerCase().startsWith("open when ");
-//   };
-
   validateDate = (date) => {
     const re = /^\d{2}\/\d{2}\/\d{4}$/;
     return re.test(String(date));
@@ -54,16 +50,12 @@ class Letter extends Component {
     // event.preventDefault();
 
     let ready = false;
-    if (
-    //   this.validatePrompt(this.state.prompt) &&
-      this.validateDate(this.state.open_date) &&
-      this.validateMessage(this.state.message)
-    ) {
+    if (this.validateDate(this.state.open_date) && this.validateMessage(this.state.message)) {
       ready = true;
     }
 
     if (!ready) {
-        // problem is this only logs it in console but not to user
+      // problem is this only logs it in console but not to user
       console.log("Please complete the required fields before submitting.");
     } else {
       // fields that we would save into api
@@ -77,23 +69,22 @@ class Letter extends Component {
 
       console.log(body);
 
-      post("/api/letter", body)
-        .then(() =>  {
-            console.log("letter to database");
-            this.setState({
-                open_date: "",
-                message: "",
-                package_id: "",
-                prompt: "",
-                recipient_email: "",
-                sender_name: "",
-              });
-            <Letter package_id = {this.props.package_id}  sender_name = {this.props.sender_name} recipient_email = {this.props.sender_name} />
-        }
-            
-        );
-
-      
+      post("/api/letter", body).then(() => {
+        console.log("letter to database");
+        this.setState({
+          open_date: "",
+          message: "",
+          package_id: "",
+          prompt: "",
+          recipient_email: "",
+          sender_name: "",
+        });
+        <Letter
+          package_id={this.props.package_id}
+          sender_name={this.props.sender_name}
+          recipient_email={this.props.sender_name}
+        />;
+      });
     }
   };
 
@@ -102,7 +93,7 @@ class Letter extends Component {
     // this.handleSubmit();
     let ready = false;
     if (
-    //   this.validatePrompt(this.state.prompt) &&
+      //   this.validatePrompt(this.state.prompt) &&
       this.validateDate(this.state.open_date) &&
       this.validateMessage(this.state.message)
     ) {
@@ -110,10 +101,9 @@ class Letter extends Component {
     }
 
     if (!ready) {
-        // problem is this only logs it in console but not to user
+      // problem is this only logs it in console but not to user
       console.log("Please complete the required fields before submitting.");
-    } 
-    else {
+    } else {
       // fields that we would save into api
       const body = {
         open_date: this.state.open_date,
@@ -125,20 +115,18 @@ class Letter extends Component {
 
       console.log(body);
 
-        post("/api/letter", body).then(console.log("letter send to database"));
-    
-    const body2 = {
+      post("/api/letter", body).then(console.log("letter send to database"));
+
+      const body2 = {
         recipient_email: this.props.recipient_email,
         sender_name: this.props.sender_name,
         package_id: this.props.package_id,
-        };
-    console.log("before email post")
-    post("/api/email", body2).then(navigate(`/thankyou/`));
-    console.log("after email post")
-    
-    };
+      };
+      console.log("before email post");
+      post("/api/email", body2).then(navigate(`/thankyou/`));
+      console.log("after email post");
     }
-
+  };
 
   render() {
     return (
@@ -206,7 +194,6 @@ class Letter extends Component {
             all done, send package
           </button>
         </div>
-        
       </>
     );
   }
