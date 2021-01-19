@@ -44,7 +44,7 @@ class Read extends Component {
     console.log(body);
 
     get("/api/package", body).then((packageObj) =>
-      navigate(`/envelopes/`, { state: { package_id: packageObj._id } })
+      navigate(`/envelopes/${packageObj._id}`)
     );
     this.setState({
       package_id: "",
