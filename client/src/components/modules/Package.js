@@ -19,6 +19,7 @@ class Package extends Component {
     this.state = {
       sender_name: "",
       recipient_email: "",
+      showError: null,
     };
   }
 
@@ -46,17 +47,10 @@ class Package extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    let ready = false;
     if (
       this.validateName(this.state.sender_name) &&
       this.validateEmail(this.state.recipient_email)
     ) {
-      ready = true;
-    }
-
-    if (!ready) {
-      console.log("Please complete the required fields before submitting.");
-    } else {
       const body = {
         sender_name: this.state.sender_name,
         recipient_email: this.state.recipient_email,
@@ -66,14 +60,21 @@ class Package extends Component {
 
       post("/api/package", body).then((packageObj) => {
         navigate(`/writeletters/`, {
-          state: { sender_name: packageObj.sender_name, package_id: packageObj._id , recipient_email: packageObj.recipient_email},
+          state: {
+            sender_name: packageObj.sender_name,
+            package_id: packageObj._id,
+            recipient_email: packageObj.recipient_email,
+          },
         });
-        // this.props.location.state
       });
 
       this.setState({
         sender_name: "",
         recipient_email: "",
+      });
+    } else {
+      this.setState({
+        showError: true,
       });
     }
   };
@@ -118,6 +119,9 @@ class Package extends Component {
         </div>
 
         <div className="u-textCenter">
+          {this.state.showError ? (
+            <h4>Please complete the fields above before proceeding.</h4>
+          ) : null}
           <button type="button" className="Create-button" onClick={this.handleSubmit}>
             next
           </button>

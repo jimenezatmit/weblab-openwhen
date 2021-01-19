@@ -23,6 +23,7 @@ class Letter extends Component {
       prompt: "",
       sender_name: "",
       recipient_email: "",
+      showError: null,
     };
   }
 
@@ -47,17 +48,9 @@ class Letter extends Component {
   };
 
   handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
-    let ready = false;
     if (this.validateDate(this.state.open_date) && this.validateMessage(this.state.message)) {
-      ready = true;
-    }
-
-    if (!ready) {
-      // problem is this only logs it in console but not to user
-      console.log("Please complete the required fields before submitting.");
-    } else {
       // fields that we would save into api
       const body = {
         open_date: this.state.open_date,
@@ -78,12 +71,17 @@ class Letter extends Component {
           prompt: "",
           recipient_email: "",
           sender_name: "",
+          showError: null,
         });
         <Letter
           package_id={this.props.package_id}
           sender_name={this.props.sender_name}
           recipient_email={this.props.sender_name}
         />;
+      });
+    } else {
+      this.setState({
+        showError: true,
       });
     }
   };
@@ -184,6 +182,12 @@ class Letter extends Component {
         </div>
 
         <div className="u-textCenter">
+          {this.state.showError ? (
+            <h4>
+              Please complete the fields above before proceeding and make sure the date is in the
+              correct format (MM/DD/YYYY).
+            </h4>
+          ) : null}
           <button type="button" className="Create-button" onClick={this.handleSubmit}>
             create another letter
           </button>
