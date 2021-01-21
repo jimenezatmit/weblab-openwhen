@@ -74,9 +74,9 @@ class App extends Component {
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
-          <HowItWorks path = "/howitworks/"/>
-          {/* <Mailbox path ="/mailbox/"/>
-          <Login path = "/login/:nextpage"/> */}
+          <HowItWorks path="/howitworks/" />
+          {/* <Mailbox path ="/mailbox/"/> */}
+          {/* <Login path = "/login/:nextpage" /> */}
         </Router>
       </>
     );
