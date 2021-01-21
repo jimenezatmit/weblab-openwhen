@@ -56,7 +56,7 @@ class Package extends Component {
       const body = {
         sender_name: this.state.sender_name,
         recipient_email: this.state.recipient_email,
-        // sender_id: this.props.sender_id
+        sender_id: this.props.user_id
       };
 
       console.log(body);
