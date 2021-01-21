@@ -33,6 +33,10 @@ class NavBar extends Component {
         <Link to="/read/" className="NavBar-link">
           read
         </Link>
+        {/* will later comment out read link and logout stuff and add the lines below */}
+        {/* <Link to ="/mailbox/" className = "NavBar-link">
+          mailbox
+        </Link> */}
         
 
         {this.props.userId ? (

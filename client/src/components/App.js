@@ -11,6 +11,8 @@ import ThankYou from "./pages/ThankYou.js";
 import WriteLetters from "./pages/WriteLetters.js";
 import Envelopes from "./pages/Envelopes.js";
 import HowItWorks from "./pages/HowItWorks.js";
+// import Login from "./pages/Login.js";
+// import Mailbox from "./pages/Mailbox.js";
 
 import "../utilities.css";
 
@@ -73,6 +75,8 @@ class App extends Component {
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
           <HowItWorks path = "/howitworks/"/>
+          {/* <Mailbox path ="/mailbox/"/>
+          <Login path = "/login/:nextpage"/> */}
         </Router>
       </>
     );
