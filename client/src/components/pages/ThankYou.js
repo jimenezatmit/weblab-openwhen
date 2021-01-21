@@ -14,12 +14,6 @@ class ThankYou extends Component {
     document.title = "Open When";
   }
 
-  // handleAnotherLetter = () => {
-  //   navigate(`/writeletters/`, {
-  //     state: { package_id: this.props.package_id },
-  //   });
-  // };
-
   render() {
     return (
       <>
@@ -32,7 +26,6 @@ class ThankYou extends Component {
               return home
             </Link>
           </button>
-
 
           <button type="button" className="Thank-button Thank-description">
             <Link to="/create" className="Thank-link">

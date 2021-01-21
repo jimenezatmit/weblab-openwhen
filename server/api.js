@@ -66,10 +66,7 @@ function sendMail(recipient_email, sender_name, package_id) {
     }
   });
 
-
-  var package_link = "https://openwhen.herokuapp.com/envelopes/".concat(package_id)
- 
-
+  var website_link = "https://openwhen.herokuapp.com/";
 
   var message = {
     from: process.env.MAIL_USER,
@@ -77,7 +74,10 @@ function sendMail(recipient_email, sender_name, package_id) {
     subject: "Open When: You Received a Package from ".concat(sender_name),
     // text: "Go to https://openwhen.herokuapp.com/read/ and paste in the following package ID to receive your package: ".concat(
     //   package_id),
-    html: "<h2 style='color:#59c3c3'> Click <a href='" + package_link + "' > here</a> to open your package of letters! </h2>"
+    html:
+      "<h2 style='color:#59c3c3'> Click <a href='" +
+      website_link +
+      "' > here</a> to open your package of letters! </h2>",
     // <br></br> <img src='/src/public/logo.png' alt='Open When' style='marginTop: 40, width: 200, resizeMode: 'contain', position: 'relative''/> "
   };
 
@@ -104,7 +104,7 @@ router.post("/letter", (req, res) => {
     message: req.body.message,
     package_id: req.body.package_id,
     prompt: req.body.prompt,
-    sender_name:  req.body.sender_name
+    sender_name: req.body.sender_name,
   });
 
   newLetter

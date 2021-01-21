@@ -42,20 +42,21 @@ class Home extends Component {
               how it works
             </Link>
           </button>
-          {this.props.user_id ? 
-          <div>
-          <button type="button" className="Home-newButton Home-description">
-            <Link to="/create/" className="Home-link">
-              create
-            </Link>
-          </button>
-          <button type="button" className="Home-newButton Home-description">
-            <Link to="/read/" className="Home-link">
-              read
-            </Link>
-          </button>
-          </div>
-          : null};
+          {this.props.userID ? (
+            <div>
+              <button type="button" className="Home-newButton Home-description">
+                <Link to="/create/" className="Home-link">
+                  create
+                </Link>
+              </button>
+              <button type="button" className="Home-newButton Home-description">
+                <Link to="/mailbox/" className="Home-link">
+                  mailbox
+                </Link>
+              </button>
+            </div>
+          ) : null}
+          ;
         </div>
       </>
     );
