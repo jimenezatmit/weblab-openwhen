@@ -11,8 +11,8 @@ import ThankYou from "./pages/ThankYou.js";
 import WriteLetters from "./pages/WriteLetters.js";
 import Envelopes from "./pages/Envelopes.js";
 import HowItWorks from "./pages/HowItWorks.js";
-// import Login from "./pages/Login.js";
-// import Mailbox from "./pages/Mailbox.js";
+import Login from "./pages/Login.js";
+import Mailbox from "./pages/Mailbox.js";
 
 import "../utilities.css";
 
@@ -27,43 +27,39 @@ class App extends Component {
   // makes props available in this component
   constructor(props) {
     super(props);
-    this.state = {
-      userId: undefined,
-    };
+    // this.state = {
+    //   userId: undefined,
+    // };
   }
 
   componentDidMount() {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-        // they are registed in the database, and currently logged in.
-        this.setState({ userId: user._id });
-      }
-    });
+    // get("/api/whoami").then((user) => {
+    //   if (user._id) {
+    //     // they are registed in the database, and currently logged in.
+    //     this.setState({ userId: user._id });
+    //   }
+    // });
   }
 
-  handleLogin = (res) => {
-    console.log(`Logged in as ${res.profileObj.name}`);
-    const userToken = res.tokenObj.id_token;
-    post("/api/login", { token: userToken }).then((user) => {
-      this.setState({ userId: user._id });
-      post("/api/initsocket", { socketid: socket.id });
-    });
-  };
+  // handleLogin = (res) => {
+  //   console.log(`Logged in as ${res.profileObj.name}`);
+  //   const userToken = res.tokenObj.id_token;
+  //   post("/api/login", { token: userToken }).then((user) => {
+  //     this.setState({ userId: user._id });
+  //     post("/api/initsocket", { socketid: socket.id });
+  //   });
+  // };
 
-  handleLogout = () => {
-    this.setState({ userId: undefined });
-    post("/api/logout");
-  };
+  // handleLogout = () => {
+  //   this.setState({ userId: undefined });
+  //   post("/api/logout");
+  // };
 
   render() {
     return (
       <>
         {/* put in div and fixed height, 100%-72 pixels */}
-        <NavBar
-          handleLogin={this.handleLogin}
-          handleLogout={this.handleLogout}
-          userId={this.state.userId}
-        />
+        <NavBar />
 
         <Router>
           <NotFound default />
@@ -72,11 +68,11 @@ class App extends Component {
           <Read path="/read/" />
           <Envelopes path="/envelopes/:package_id" />
           <IndividualLetterRead path="/letter/" />
-          <ThankYou path="/thankyou/" />
+          {/* <ThankYou path="/thankyou/" /> */}
           <WriteLetters path="/writeletters/" />
           <HowItWorks path="/howitworks/" />
-          {/* <Mailbox path ="/mailbox/"/> */}
-          {/* <Login path = "/login/:nextpage" /> */}
+          <Mailbox path="/mailbox/" />
+          <Login path="/login/:nextpage" />
         </Router>
       </>
     );

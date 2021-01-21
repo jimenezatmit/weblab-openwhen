@@ -28,6 +28,12 @@ class Login extends Component {
 
   componentDidMount() {
     document.title = "Open When: Login";
+    get("/api/whoami").then((user) => {
+      if (user._id) {
+        // they are registed in the database, and currently logged in.
+        this.setState({ userId: user._id });
+      }
+    });
   }
 
   //   handleClick = (event) => {
@@ -65,7 +71,7 @@ class Login extends Component {
       <>
         <div className="u-textCenter">
           <h1 className="Login-title u-textCenter">Login</h1>
-          {this.props.userId ? (
+          {this.state.userId ? (
             <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"

@@ -1,0 +1,14 @@
+.Mailbox-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  color: var(--tealblue);
+}
+
+.Mailbox-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
