@@ -12,7 +12,7 @@ import WriteLetters from "./pages/WriteLetters.js";
 import Envelopes from "./pages/Envelopes.js";
 import HowItWorks from "./pages/HowItWorks.js";
 // import Login from "./pages/Login.js";
-// import Mailbox from "./pages/Mailbox.js";
+import Mailbox from "./pages/Mailbox.js";
 
 import "../utilities.css";
 
@@ -72,11 +72,11 @@ class App extends Component {
           <Read path="/read/" />
           <Envelopes path="/envelopes/:package_id" />
           <IndividualLetterRead path="/letter/" />
-          <ThankYou path="/thankyou/" />
+          {/* <ThankYou path="/thankyou/" /> */}
           <WriteLetters path="/writeletters/" />
           <HowItWorks path = "/howitworks/"/>
-          {/* <Mailbox path ="/mailbox/"/>
-          <Login path = "/login/:nextpage"/> */}
+          <Mailbox path ="/mailbox/"/> 
+          {/* <Login path = "/login/:nextpage"/>  */}
         </Router>
       </>
     );
