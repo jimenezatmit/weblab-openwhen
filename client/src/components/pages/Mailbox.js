@@ -5,6 +5,7 @@ import { get } from "../../utilities";
 
 import "../../utilities.css";
 import "./Mailbox.css";
+import  "./Home.css";
 
 class Mailbox extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Mailbox extends Component {
                 created
                 </h2>
                {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
-                {/* get("/api/allcreatedpackages", {sender_id : this.props.user_id}).then( (packages) => {
+                {get("/api/allcreatedpackages", {sender_id : this.props.user_id}).then( (packages) => {
                     // go through each package and render a PackageIcon accordingly
                     
                     packages.map((packageObj) => {
@@ -37,7 +38,13 @@ class Mailbox extends Component {
                         <PackageIcon package_id = {packageObj.package_id} word_under = {word_under}/>
                     })
 
-                }) */}
+                })}
+                <button type="button" className="Home-newButton Home-description">
+                    <Link to="/create/" className="Home-link">
+                        create more
+                    </Link>
+                </button>
+
             </div>
             <div className = "Mailbox-column">
                 <h2>
@@ -45,13 +52,18 @@ class Mailbox extends Component {
                 </h2>
                  {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
              
-                {/* get("/api/allreceivedpackages", {recipient_id : this.props.user_id}).then( (packages) => {
+                {get("/api/allreceivedpackages", {recipient_id : this.props.user_id}).then( (packages) => {
                     // go through each package and render a PackageIcon accordingly maybe via packages.map((package) => <PackageIcon ..../>)
                     packages.map((packageObj) => {
                         word_under =  "From:  ".concat(packageObj.sender_name);
                         <PackageIcon package_id = {packageObj.package_id} word_under = {word_under}/>
                     })
-                }) */}
+                })}
+                <button type="button" className="Home-newButton Home-description">
+                    <Link to="/read/" className="Home-link">
+                        paste in package code
+                    </Link>
+                </button>
             </div>
         </div>
       </>

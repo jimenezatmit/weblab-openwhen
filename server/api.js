@@ -147,21 +147,21 @@ router.get("/allletters", (req, res) => {
 
 // Kate wrote the two below to use for Mailbox late
 
-// router.get("/allreceivedpackages", (req, res) => {
-//   Package.find({ recipient_id: req.query.recipient_id }).then((packages) => {
-//     res.send(packages);
-//   });
-// });
+router.get("/allreceivedpackages", (req, res) => {
+  Package.find({ recipient_id: req.query.recipient_id }).then((packages) => {
+    res.send(packages);
+  });
+});
 
-// router.get("/allcreatedpackages", (req, res) => {
-//   Package.find({ sender_id: req.query.sender_id }).then((packages) => {
-//     res.send(packages);
-//   });
-// });
+router.get("/allcreatedpackages", (req, res) => {
+  Package.find({ sender_id: req.query.sender_id }).then((packages) => {
+    res.send(packages);
+  });
+});
 
 //pasted in from catbook
 router.get("/user", (req, res) => {
-  User.findById(req.query.userid).then((user) => {
+  User.findById(req.query.user_id).then((user) => {
     res.send(user);
   });
 });

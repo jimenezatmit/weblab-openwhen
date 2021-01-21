@@ -42,6 +42,8 @@ class Home extends Component {
               how it works
             </Link>
           </button>
+          {this.props.user_id ? 
+          <div>
           <button type="button" className="Home-newButton Home-description">
             <Link to="/create/" className="Home-link">
               create
@@ -52,6 +54,8 @@ class Home extends Component {
               read
             </Link>
           </button>
+          </div>
+          : null};
         </div>
       </>
     );

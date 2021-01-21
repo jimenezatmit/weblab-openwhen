@@ -43,12 +43,14 @@ class Read extends Component {
 
     console.log(body);
 
-    get("/api/package", body).then((packageObj) =>
-      navigate(`/envelopes/${packageObj._id}`)
-    );
-    this.setState({
-      package_id: "",
-    });
+    //Jan 21 add recipient_id to corresponding package in db
+    Package.findOneAndUpdate(body, {sender_id:this.props.user_id}, {new : true});
+    // get("/api/package", body).then((packageObj) =>
+    //   navigate(``)
+    // );
+    // this.setState({
+    //   package_id: "",
+    // });
   };
 
   //need to figure out how to pass sender_name and package_id as props to next page with letters
@@ -56,7 +58,7 @@ class Read extends Component {
     return (
       <>
         <div>
-          <h1 className="Create-title u-textCenter">Read</h1>
+          <h1 className="Create-title u-textCenter">open package</h1>
           <div id="subHeading">unwrap your package of letters!</div>
           <form className="u-textCenter">
             <label className="Create-description" htmlFor="code">

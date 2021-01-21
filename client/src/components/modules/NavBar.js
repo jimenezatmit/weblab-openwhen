@@ -27,19 +27,22 @@ class NavBar extends Component {
         <Link to="/howitworks/" className="NavBar-link">
           how it works
         </Link>
-        <Link to="/create/" className="NavBar-link">
+        {this.props.user_id ? 
+        <div>
+          <Link to="/create/" className="NavBar-link">
           create
         </Link>
         <Link to="/read/" className="NavBar-link">
           read
         </Link>
-        {/* will later comment out read link and logout stuff and add the lines below */}
-        {/* <Link to ="/mailbox/" className = "NavBar-link">
-          mailbox
-        </Link> */}
+        </div>:
+        null
+        }
+        
+  
         
 
-        {this.props.userId ? (
+        {this.props.user_id ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Logout"
