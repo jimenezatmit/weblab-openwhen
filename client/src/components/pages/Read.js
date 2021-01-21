@@ -44,7 +44,7 @@ class Read extends Component {
     console.log(body);
 
     //Jan 21 add recipient_id to corresponding package in db
-    Package.findOneAndUpdate(body, {sender_id:this.props.user_id}, {new : true});
+    Package.findOneAndUpdate(body, { sender_id: this.props.userID }, { new: true });
     // get("/api/package", body).then((packageObj) =>
     //   navigate(``)
     // );

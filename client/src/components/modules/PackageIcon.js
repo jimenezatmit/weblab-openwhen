@@ -6,8 +6,6 @@ import { get } from "../../utilities";
 import "../../utilities.css";
 // import "./Envelope.css";
 
-
-
 class PackageIcon extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +13,9 @@ class PackageIcon extends Component {
 
   //componentDidMount make the get request, store the letters somehow in a state
   handleClick = () => {
-    get("/api/package", { package_id: this.props.package_id }).then((packageObj) => {
-      navigate(`/envelopes/${this.props.package_id}`);
-    });
+    // get("/api/package", { package_id: this.props.package_id }).then((packageObj) => {
+    navigate(`/envelopes/${this.props.package_id}`);
+    // });
   };
 
   render() {

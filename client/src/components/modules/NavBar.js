@@ -11,7 +11,7 @@ import "./NavBar.css";
  *
  * @param handleLogin (function)
  * @param handleLogout (function)
- * @param {number} userID
+ * @param userID
  */
 class NavBar extends Component {
   constructor(props) {

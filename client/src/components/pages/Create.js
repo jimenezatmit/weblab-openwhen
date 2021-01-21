@@ -21,7 +21,7 @@ class Create extends Component {
         <h1 className="Create-title u-textCenter">Create</h1>
         <div id="subHeading">enter the fields below to get started!</div>
 
-        <Package></Package>
+        <Package userID={this.props.userID}></Package>
       </>
     );
   }

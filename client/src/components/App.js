@@ -60,6 +60,7 @@ class App extends Component {
     return (
       <>
         {/* put in div and fixed height, 100%-72 pixels */}
+
         <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
@@ -69,14 +70,14 @@ class App extends Component {
         <Router>
           <NotFound default />
           <Home path="/" userID={this.state.userId} />
-          <Create path="/create/" />
+          <Create path="/create/" userID={this.state.userId} />
           <Read path="/read/" />
           <Envelopes path="/envelopes/:package_id" />
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
           <HowItWorks path="/howitworks/" />
-          <Mailbox path="/mailbox/" />
+          <Mailbox path="/mailbox/" userID={this.state.userId} />
         </Router>
       </>
     );

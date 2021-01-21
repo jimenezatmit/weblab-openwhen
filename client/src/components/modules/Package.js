@@ -19,8 +19,8 @@ class Package extends Component {
     this.state = {
       sender_name: "",
       recipient_email: "",
-    //   sender_id: "",
-    //   recipient_id: "",
+      //   sender_id: "",
+      //   recipient_id: "",
       showError: null,
     };
   }
@@ -56,7 +56,7 @@ class Package extends Component {
       const body = {
         sender_name: this.state.sender_name,
         recipient_email: this.state.recipient_email,
-        sender_id: this.props.user_id
+        sender_id: this.props.userID,
       };
 
       console.log(body);
@@ -74,7 +74,6 @@ class Package extends Component {
       this.setState({
         sender_name: "",
         recipient_email: "",
-        // sender_id: "",
       });
     } else {
       this.setState({

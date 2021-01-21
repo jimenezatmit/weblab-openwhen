@@ -32,6 +32,12 @@ class ThankYou extends Component {
               send a new package
             </Link>
           </button>
+
+          <button type="button" className="Thank-button Thank-description">
+            <Link to="/mailbox" className="Thank-link">
+              see your mailbox
+            </Link>
+          </button>
         </div>
       </>
     );
