@@ -71,7 +71,7 @@ class App extends Component {
           <NotFound default />
           <Home path="/" userID={this.state.userId} />
           <Create path="/create/" userID={this.state.userId} />
-          <Read path="/read/" />
+          <Read path="/read/" userID={this.state.userId} />
           <Envelopes path="/envelopes/:package_id" />
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />

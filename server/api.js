@@ -127,8 +127,10 @@ router.post("/package", (req, res) => {
 });
 
 //trying to add get for package and letter 1/15
-router.get("/package", (req, res) => {
+router.get("/updatepackage", (req, res) => {
   Package.findOne({ _id: req.query.package_id }).then((package) => {
+    package.recipient_id = req.query.recipient_id;
+    package.save();
     res.send(package);
   });
 });
@@ -158,6 +160,8 @@ router.get("/allcreatedpackages", (req, res) => {
     res.send(packages);
   });
 });
+
+router.get("/");
 
 //pasted in from catbook
 router.get("/user", (req, res) => {

@@ -9,10 +9,6 @@ import "../../utilities.css";
 import "./Read.css";
 import "./Create.css";
 
-//not sure if this line below/filepath is right but doesn't show error
-const PackageSchema = require("/server/models/package");
-
-
 class Read extends Component {
   constructor(props) {
     super(props);
@@ -43,18 +39,19 @@ class Read extends Component {
     // fields that we would feed into api
     const body = {
       package_id: this.state.package_id,
+      recipient_id: this.props.userID,
     };
 
     console.log(body);
 
-    //Jan 21 add recipient_id to corresponding package in db -> not sure if this is right
-    PackageSchema.findOneAndUpdate(body, {recipient_id: this.props.userID});
-    // get("/api/package", body).then((packageObj) =>
-    //   navigate(``)
-    // );
-    // this.setState({
-    //   package_id: "",
-    // });
+    get("/api/updatepackage", body).then((packageObj) => {
+      console.log(packageObj);
+      navigate(`/mailbox`);
+    });
+
+    this.setState({
+      package_id: "",
+    });
   };
 
   //need to figure out how to pass sender_name and package_id as props to next page with letters
