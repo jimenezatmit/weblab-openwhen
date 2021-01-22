@@ -14,26 +14,37 @@ return (
     <>
         <h1 className="Home-title u-textCenter" >how it works</h1>
         <hr className="Home-line" />
-        <h4 className="Home-subTitle Home-blueText">step one: create package</h4>
+        <h4 className="Home-subTitle Home-blueText">1. login</h4>
+        <div className="Home-description">
+          you must log in with google account in upper right corner to unlock site features
+        </div>
+        <hr className="Home-line" />
+        <h4 className="Home-subTitle Home-blueText">2. create package</h4>
         <div className="Home-description">
           navigate to the "create" page where you can input your name and the recipient's email
         </div>
         <hr className="Home-line" />
-        <h4 className="Home-subTitle Home-blueText">step two: write letters and customize tags</h4>
+        <h4 className="Home-subTitle Home-blueText">3. write letters and customize tags</h4>
         <div className="Home-description">
           for each letter added to your package, select the "open when" date and write your message
         </div>
         <hr className="Home-line" />
-        <h4 className="Home-subTitle Home-blueText">step three: send letters!</h4>
+        <h4 className="Home-subTitle Home-blueText">4. send letters!</h4>
         <div className="Home-description">
           hit "all done, send letters" button at the bottom of the "create" page to send package
         </div>
         <hr className="Home-line" />
-        <h4 className="Home-subTitle Home-blueText">step four: recipient views letters! </h4>
+        <h4 className="Home-subTitle Home-blueText">5. recipient gets email! </h4>
         <div className="Home-description">
-          the recipient receives an email with a link and code to view their letters 
+          the recipient receives an email with a link and code to view their letters
         </div>
         <hr className="Home-line" />
+        <h4 className="Home-subTitle Home-blueText">6. recipient views email!</h4>
+        <div className="Home-description">
+          log in, navigate to the "mailbox" page, click on "add a package id" button and paste in code from email 
+        </div>
+        <hr className="Home-line" />
+        
         <br></br>
         <h1 className="Home-title u-textCenter">faq</h1>
         <hr className="Home-line" />
@@ -49,12 +60,12 @@ return (
         <hr className="Home-line" />
         <h4 className="Home-subTitle  Home-blueText">what will the recipient see if they try to view the letter before the "open when" date?</h4>
         <div className="Home-description">
-          clicking on the envelope and prompt will take them to the letter-viewing page, but it will tell them when it will be unlocked instead of showing them the message
+          clicking on the closed envelope and prompt will take them to the letter-viewing page, but it will tell them when it will be unlocked instead of showing them the message
         </div>
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">why can't the recipient find the email?</h4>
         <div className="Home-description">
-          it's in their junk inbox :( sender is fromopenwhen@gmail.com
+          it's in their junk inbox, sadly. sender is: fromopenwhen@gmail.com
         </div>
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">why won't it let me click the button?</h4>
