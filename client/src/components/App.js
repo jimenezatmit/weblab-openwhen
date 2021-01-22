@@ -77,7 +77,12 @@ class App extends Component {
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
           <HowItWorks path="/howitworks/" />
+
+          {this.state.userId ? 
+	 
           <Mailbox path="/mailbox/" userID={this.state.userId} />
+          :
+          null}
         </Router>
       </>
     );
