@@ -4,7 +4,7 @@ import { navigate } from "@reach/router";
 import { get } from "../../utilities";
 
 import "../../utilities.css";
-// import "./Envelope.css";
+import "./PackageIcon.css";
 
 class PackageIcon extends Component {
   constructor(props) {
@@ -27,9 +27,9 @@ class PackageIcon extends Component {
           crossOrigin="anonymous"
         ></link>
         <div className="u-textCenter">
-          <i onClick={this.handleClick} className="fas fa-gift fa-6x"></i>
+          <i onClick={this.handleClick} className="PackageIcon-purple fas fa-gift fa-6x"></i>
         </div>
-        <h3 className="Envelope-prompt"> {this.props.word_under} </h3>
+        <h3 className="Envelope-prompt PackageIcon-black"> {this.props.word_under} </h3>
       </>
     );
   }
