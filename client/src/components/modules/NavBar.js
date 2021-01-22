@@ -29,10 +29,10 @@ class NavBar extends Component {
         </Link>
         {this.props.userID ? (
           <div>
-            <Link to="/create/" className="NavBar-link">
+            <Link to="/create/" className="NavBar-link NavBar-linkContainer ">
               create
             </Link>
-            <Link to="/mailbox/" className="NavBar-link">
+            <Link to="/mailbox/" className="NavBar-link NavBar-linkContainer ">
               mailbox
             </Link>
           </div>

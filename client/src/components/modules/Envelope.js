@@ -32,20 +32,23 @@ class Envelope extends Component {
           href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
           crossOrigin="anonymous"
         ></link>
-        <div className="Envelope-centeredAndBlue">
+        
           {this.props.open_date <= moment().format("MM/DD/YYYY")
-              ? //closed until the date, closed envelope
+              ? //past the date, open envelope
               <div>
+              <div className="Envelope-centeredAndBlue">
               <i onClick={this.handleClick} className="far fa-envelope-open fa-10x"></i>
+              </div>
               <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
               </div>
               :
               <div>
+              <div className="Envelope-centeredAndBlue">
               <i onClick={this.handleClick} className="far fa-envelope fa-10x"></i>
+              </div>
               <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
               </div>
-          }
-          </div>
+          };
       </>
     );
   }

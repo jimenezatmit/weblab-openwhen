@@ -15,7 +15,8 @@
 }
 
 .NavBar-linkContainer {
-  margin-left: var(--l);
+  /* margin-left: var(--xxl); */
+  margin-right: var(--xxl);
 }
 
 .NavBar-link,
