@@ -118,6 +118,7 @@ router.post("/package", (req, res) => {
   const newPackage = new Package({
     sender_name: req.body.sender_name,
     recipient_email: req.body.recipient_email,
+    sender_id: req.body.sender_id,
   });
 
   newPackage

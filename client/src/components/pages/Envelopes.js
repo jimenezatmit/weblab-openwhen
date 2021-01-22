@@ -21,7 +21,7 @@ class Envelopes extends Component {
 
   componentDidMount() {
     document.title = "Open When: Read";
-    get("/api/allletters", { package_id: this.props.package_id }).then((letters) => {
+    get("/api/allletters", { package_id: this.props.location.state.package_id }).then((letters) => {
       console.log(letters);
       letters.map((letter) => {
         this.setState({
@@ -32,13 +32,9 @@ class Envelopes extends Component {
     });
   }
 
-  // handleClick = () => {
-  //   const letter_id = event.target.message;
-  //   console.log(letter_id);
-  //   // get("/api/letter", { letter_id: letter_id }).then((letterObj) => {
-  //   //   navigate(`/letter/${letterObj._id}`);
-  //   // });
-  // };
+  handleReturn = () => {
+    navigate(`/mailbox/`);
+  };
 
   render() {
     return (
@@ -67,6 +63,11 @@ class Envelopes extends Component {
               ></Envelope>
             </div>
           ))}
+        </div>
+        <div className="u-textCenter">
+          <button type="button" className="Create-button" onClick={this.handleReturn}>
+            return to mailbox
+          </button>
         </div>
       </>
     );

@@ -14,7 +14,7 @@ class PackageIcon extends Component {
   //componentDidMount make the get request, store the letters somehow in a state
   handleClick = () => {
     // get("/api/package", { package_id: this.props.package_id }).then((packageObj) => {
-    navigate(`/envelopes/${this.props.package_id}`);
+    navigate(`/envelopes/`, { state: { package_id: this.props.package_id } });
     // });
   };
 

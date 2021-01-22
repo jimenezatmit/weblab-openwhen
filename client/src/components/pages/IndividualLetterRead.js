@@ -31,7 +31,7 @@ class IndividualLetterRead extends Component {
   }
 
   handleReturn = () => {
-    navigate(`/envelopes/${this.state.package_id}`);
+    navigate(`/envelopes/`, { state: { package_id: this.state.package_id } });
   };
 
   render() {

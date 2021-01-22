@@ -12,49 +12,55 @@ class Mailbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      createdPackages: null,
-      receivedPackages: null,
+      createdPackages: [],
+      receivedPackages: [],
     };
   }
 
   componentDidMount() {
     document.title = "Open When: Mailbox";
 
-    // console.log(this.props.userID);
+    console.log(this.state.userID);
 
     get("/api/allcreatedpackages", { sender_id: this.props.userID }).then((packages) => {
       // go through each package and render a PackageIcon accordingly
 
-      console.log(this.props.userID);
+      console.log(packages);
 
       packages.map((packageObj) => {
-        word_under = "To:  ".concat(packageObj.recipient_email);
         this.setState({
-          createdPackages: this.state.createdPackages.concat(
-            <PackageIcon package_id={packageObj.package_id} word_under={word_under} />
-          ),
+          createdPackages: this.state.createdPackages.concat(packageObj),
         });
+        console.log(this.state.createdPackages);
       });
     });
 
-    {
-      get("/api/allreceivedpackages", { recipient_id: this.props.userID }).then((packages) => {
-        console.log(packages);
+    get("/api/allreceivedpackages", { recipient_id: this.props.userID }).then((packages) => {
+      console.log(packages);
 
-        // go through each package and render a PackageIcon accordingly maybe via packages.map((package) => <PackageIcon ..../>)
-        packages.map((packageObj) => {
-          word_under = "From:  ".concat(packageObj.sender_name);
-          this.setState({
-            receivedPackages: this.state.receivedPackages.concat(
-              <PackageIcon package_id={packageObj.package_id} word_under={word_under} />
-            ),
-          });
+      // go through each package and render a PackageIcon accordingly maybe via packages.map((package) => <PackageIcon ..../>)
+      packages.map((packageObj) => {
+        this.setState({
+          receivedPackages: this.state.receivedPackages.concat(packageObj),
         });
       });
-    }
+    });
   }
 
   render() {
+    let createdPackageList = this.state.createdPackages.map((packageObj) => (
+      <PackageIcon
+        package_id={packageObj._id}
+        word_under={"To:  ".concat(packageObj.recipient_email)}
+      />
+    ));
+
+    let receivedPackageList = this.state.receivedPackages.map((packageObj) => (
+      <PackageIcon
+        package_id={packageObj._id}
+        word_under={"From:  ".concat(packageObj.sender_name)}
+      />
+    ));
     return (
       <>
         <h1 className="u-textCenter">welcome to your mailbox</h1>
@@ -63,7 +69,7 @@ class Mailbox extends Component {
           <div className="Mailbox-column">
             <h2>created</h2>
             {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
-            {this.state.createdPackages}
+            {createdPackageList}
             <button type="button" className="Home-newButton Home-description">
               <Link to="/create/" className="Home-link">
                 create another package
@@ -74,7 +80,7 @@ class Mailbox extends Component {
             <h2>received</h2>
             {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
 
-            {this.state.receivedPackages}
+            {receivedPackageList}
             <button type="button" className="Home-newButton Home-description">
               <Link to="/read/" className="Home-link">
                 add a package ID
