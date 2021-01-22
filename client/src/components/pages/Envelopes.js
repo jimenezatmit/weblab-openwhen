@@ -39,6 +39,8 @@ class Envelopes extends Component {
   render() {
     return (
       <>
+      {this.props.userID ?
+      <div>
         <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
@@ -69,6 +71,11 @@ class Envelopes extends Component {
             return to mailbox
           </button>
         </div>
+        </div>:
+         <h1 className="u-textCenter">
+             to view package,  please login in top right first
+         </h1>
+  }
       </>
     );
   }

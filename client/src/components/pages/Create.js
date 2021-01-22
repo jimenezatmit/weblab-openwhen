@@ -18,10 +18,16 @@ class Create extends Component {
   render() {
     return (
       <>
+      {this.props.userID ?
+      <div>
         <h1 className="Create-title u-textCenter">Create</h1>
         <div id="subHeading">enter the fields below to get started!</div>
 
         <Package userID={this.props.userID}></Package>
+        </div>
+        :
+        <h1 className="Create-title u-textCenter">to create,  please login in top right first</h1>
+      }
       </>
     );
   }

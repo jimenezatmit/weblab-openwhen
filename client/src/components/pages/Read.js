@@ -58,6 +58,8 @@ class Read extends Component {
   render() {
     return (
       <>
+      {this.props.userID ? 
+        <div>
         <div>
           <h1 className="Create-title u-textCenter">open package</h1>
           <div id="subHeading">unwrap your package of letters!</div>
@@ -84,6 +86,10 @@ class Read extends Component {
             see letters
           </button>
         </div>
+        </div>
+        :
+        <h1 className="Create-title u-textCenter">to read, please login in top right first </h1>
+    }
       </>
     );
   }
