@@ -10,7 +10,7 @@ import "./Read.css";
 import "./Create.css";
 
 //not sure if this line below/filepath is right but doesn't show error
-const PackageSchema = require("/server/models/package.js");
+const PackageSchema = require("/server/models/package");
 
 
 class Read extends Component {
