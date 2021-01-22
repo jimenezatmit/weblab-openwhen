@@ -72,7 +72,7 @@ class App extends Component {
           <Home path="/" userID={this.state.userId} />
           <Create path="/create/" userID={this.state.userId} />
           <Read path="/read/" userID={this.state.userId} />
-          <Envelopes path="/envelopes/" />
+          <Envelopes path="/envelopes/" userID={this.state.userId} />
           <IndividualLetterRead path="/letter/" />
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />

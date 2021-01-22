@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 import { get } from "../../utilities";
+import moment from "moment";
 
 import "../../utilities.css";
 import "./Envelope.css";
@@ -32,12 +33,19 @@ class Envelope extends Component {
           crossOrigin="anonymous"
         ></link>
         <div className="Envelope-centeredAndBlue">
-          <i onClick={this.handleClick} className="far fa-envelope fa-10x"></i>
-          {/* figure out how to pass in letter detail as props to render that on IndiivdualLetterRead page. 
-          need conditional with date for unlock also */}
-          {/* () => navigate("/letter/") */}
-        </div>
-        <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
+          {this.props.open_date <= moment().format("MM/DD/YYYY")
+              ? //closed until the date, closed envelope
+              <div>
+              <i onClick={this.handleClick} className="far fa-envelope-open fa-10x"></i>
+              <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
+              </div>
+              :
+              <div>
+              <i onClick={this.handleClick} className="far fa-envelope fa-10x"></i>
+              <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
+              </div>
+          }
+          </div>
       </>
     );
   }
