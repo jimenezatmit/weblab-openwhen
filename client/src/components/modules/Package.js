@@ -56,7 +56,7 @@ class Package extends Component {
       const body = {
         sender_name: this.state.sender_name,
         recipient_email: this.state.recipient_email,
-        sender_id: this.props.userID,
+        sender_id: this.props.userID, //adds sender_id as well now
       };
 
       console.log(body);
@@ -74,6 +74,7 @@ class Package extends Component {
       this.setState({
         sender_name: "",
         recipient_email: "",
+        sender_id: "",
       });
     } else {
       this.setState({

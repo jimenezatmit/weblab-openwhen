@@ -9,6 +9,10 @@ import "../../utilities.css";
 import "./Read.css";
 import "./Create.css";
 
+//not sure if this line below/filepath is right but doesn't show error
+const PackageSchema = require("/server/models/package.js");
+
+
 class Read extends Component {
   constructor(props) {
     super(props);
@@ -43,8 +47,8 @@ class Read extends Component {
 
     console.log(body);
 
-    //Jan 21 add recipient_id to corresponding package in db
-    Package.findOneAndUpdate(body, { sender_id: this.props.userID }, { new: true });
+    //Jan 21 add recipient_id to corresponding package in db -> not sure if this is right
+    PackageSchema.findOneAndUpdate(body, {recipient_id: this.props.userID});
     // get("/api/package", body).then((packageObj) =>
     //   navigate(``)
     // );
