@@ -64,3 +64,17 @@
   margin-bottom: var(--s);
   font-family: "Quicksand", sans-serif;
 }
+
+.Write-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  color: var(--tealblue);
+}
+
+.Write-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}

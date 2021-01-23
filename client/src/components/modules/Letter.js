@@ -27,6 +27,10 @@ class Letter extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log(this.state.message);
+  }
+
   validateDate = (date) => {
     const re = /^\d{2}\/\d{2}\/\d{4}$/;
     return re.test(String(date));
@@ -188,7 +192,7 @@ class Letter extends Component {
               correct format (MM/DD/YYYY).
             </h4>
           ) : null}
-          <button type="button" className="Create-button" onClick={this.handleSubmit}>
+          {/* <button type="button" className="Create-button" onClick={this.handleSubmit}>
             create another letter
           </button>
         </div>
@@ -196,7 +200,7 @@ class Letter extends Component {
         <div className="u-textCenter">
           <button type="button" className="Create-button" onClick={this.handleFinalSubmit}>
             all done, send package
-          </button>
+          </button> */}
         </div>
       </>
     );

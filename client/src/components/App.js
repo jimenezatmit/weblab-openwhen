@@ -11,8 +11,8 @@ import ThankYou from "./pages/ThankYou.js";
 import WriteLetters from "./pages/WriteLetters.js";
 import Envelopes from "./pages/Envelopes.js";
 import HowItWorks from "./pages/HowItWorks.js";
-// import Login from "./pages/Login.js";
 import Mailbox from "./pages/Mailbox.js";
+import Review from "./pages/Review.js";
 
 import "../utilities.css";
 
@@ -77,12 +77,9 @@ class App extends Component {
           <ThankYou path="/thankyou/" />
           <WriteLetters path="/writeletters/" />
           <HowItWorks path="/howitworks/" />
+          <Review path="/review/" />
 
-          {this.state.userId ? 
-	 
-          <Mailbox path="/mailbox/" userID={this.state.userId} />
-          :
-          null}
+          {this.state.userId ? <Mailbox path="/mailbox/" userID={this.state.userId} /> : null}
         </Router>
       </>
     );
