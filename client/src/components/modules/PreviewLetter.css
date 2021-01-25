@@ -1,0 +1,12 @@
+.IndividualLetterRead-body {
+  background-color: var(--seafoam);
+  text-align: left;
+  margin-left: 56px;
+  margin-right: 56px;
+}
+
+.IndividualLetterRead-prompt {
+  text-align: center;
+  margin: var(--m);
+  color: var(--black);
+}

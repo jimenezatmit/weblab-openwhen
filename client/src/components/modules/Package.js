@@ -67,6 +67,7 @@ class Package extends Component {
             sender_name: packageObj.sender_name,
             package_id: packageObj._id,
             recipient_email: packageObj.recipient_email,
+            new_package: true,
           },
         });
       });
