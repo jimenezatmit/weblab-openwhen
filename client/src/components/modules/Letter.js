@@ -28,7 +28,20 @@ class Letter extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.message);
+    if (this.props.letter_id != null) {
+      get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
+        this.setState(
+          {
+            open_date: letterObj.open_date,
+            message: letterObj.message,
+            package_id: letterObj.package_id,
+            prompt: letterObj.prompt,
+            sender_name: letterObj.sender_name,
+          },
+          () => console.log(this.state.message)
+        );
+      });
+    }
   }
 
   validateDate = (date) => {
@@ -66,22 +79,47 @@ class Letter extends Component {
 
       console.log(body);
 
-      post("/api/letter", body).then(() => {
-        console.log("letter to database");
-        this.setState({
-          open_date: "",
-          message: "",
-          package_id: "",
-          prompt: "",
-          recipient_email: "",
-          sender_name: "",
-          showError: null,
-        });
-        <Letter
-          package_id={this.props.package_id}
-          sender_name={this.props.sender_name}
-          recipient_email={this.props.sender_name}
-        />;
+      post("/api/letter", body).then((result) => {
+        console.log("letter to database, id:", result._id);
+
+        // add letter to letterList in Parent component
+        this.props.complete_function(result._id);
+      });
+    } else {
+      this.setState({
+        showError: true,
+      });
+    }
+    // this.setState({
+    //   open_date: "",
+    //   message: "",
+    //   package_id: "",
+    //   prompt: "",
+    //   recipient_email: "",
+    //   sender_name: "",
+    //   showError: null,
+    // });
+  };
+
+  handleUpdate = (event) => {
+    event.preventDefault();
+
+    if (this.validateDate(this.state.open_date) && this.validateMessage(this.state.message)) {
+      // fields that we would save into api
+      const body = {
+        open_date: this.state.open_date,
+        message: this.state.message,
+        // package_id: this.props.package_id,
+        prompt: this.state.prompt,
+        letter_id: this.props.letter_id,
+        // sender_name: this.props.sender_name,
+      };
+
+      get("/api/updateletter", body).then((result) => {
+        console.log("letter to database, id:", result._id);
+
+        // add letter to letterList in Parent component
+        this.props.update_function(result._id);
       });
     } else {
       this.setState({
@@ -90,47 +128,17 @@ class Letter extends Component {
     }
   };
 
-  handleFinalSubmit = (event) => {
-    event.preventDefault();
-    // this.handleSubmit();
-    let ready = false;
-    if (
-      //   this.validatePrompt(this.state.prompt) &&
-      this.validateDate(this.state.open_date) &&
-      this.validateMessage(this.state.message)
-    ) {
-      ready = true;
-    }
-
-    if (!ready) {
-      // problem is this only logs it in console but not to user
-      console.log("Please complete the required fields before submitting.");
-    } else {
-      // fields that we would save into api
-      const body = {
-        open_date: this.state.open_date,
-        message: this.state.message,
-        package_id: this.props.package_id,
-        prompt: this.state.prompt,
-        sender_name: this.props.sender_name,
-      };
-
-      console.log(body);
-
-      post("/api/letter", body).then(console.log("letter send to database"));
-
-      const body2 = {
-        recipient_email: this.props.recipient_email,
-        sender_name: this.props.sender_name,
-        package_id: this.props.package_id,
-      };
-      console.log("before email post");
-      post("/api/email", body2).then(navigate(`/thankyou/`));
-      console.log("after email post");
-    }
-  };
-
   render() {
+    let finishButton = this.props.letter_id ? (
+      <button type="button" className="Create-button" onClick={this.handleUpdate}>
+        update letter
+      </button>
+    ) : (
+      <button type="button" className="Create-button" onClick={this.handleSubmit}>
+        complete letter
+      </button>
+    );
+
     return (
       <>
         <div>
@@ -194,14 +202,10 @@ class Letter extends Component {
           ) : null}
           {/* <button type="button" className="Create-button" onClick={this.handleSubmit}>
             create another letter
-          </button>
-        </div>
-        <br></br>
-        <div className="u-textCenter">
-          <button type="button" className="Create-button" onClick={this.handleFinalSubmit}>
-            all done, send package
           </button> */}
         </div>
+        <br></br>
+        <div className="u-textCenter">{finishButton}</div>
       </>
     );
   }

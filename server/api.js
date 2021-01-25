@@ -136,6 +136,16 @@ router.get("/updatepackage", (req, res) => {
   });
 });
 
+router.get("/updateletter", (req, res) => {
+  Letter.findOne({ _id: req.query.letter_id }).then((letter) => {
+    letter.message = req.query.message;
+    letter.prompt = req.query.prompt;
+    letter.open_date = req.query.open_date;
+    letter.save();
+    res.send(letter);
+  });
+});
+
 router.get("/letter", (req, res) => {
   Letter.findOne({ _id: req.query.letter_id }).then((letter) => {
     res.send(letter);

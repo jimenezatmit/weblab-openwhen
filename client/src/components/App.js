@@ -70,16 +70,33 @@ class App extends Component {
         <Router>
           <NotFound default />
           <Home path="/" userID={this.state.userId} />
-          <Create path="/create/" userID={this.state.userId} />
-          <Read path="/read/" userID={this.state.userId} />
-          <Envelopes path="/envelopes/" userID={this.state.userId} />
-          <IndividualLetterRead path="/letter/" />
-          <ThankYou path="/thankyou/" />
-          <WriteLetters path="/writeletters/" />
           <HowItWorks path="/howitworks/" />
           <Review path="/review/" />
 
-          {this.state.userId ? <Mailbox path="/mailbox/" userID={this.state.userId} /> : null}
+          {this.state.userId ? (
+            <Mailbox path="/mailbox/" userID={this.state.userId} />
+          ) : (
+            <NotFound default />
+          )}
+          {this.state.userId ? (
+            <Create path="/create/" userID={this.state.userId} />
+          ) : (
+            <NotFound default />
+          )}
+          {this.state.userId ? (
+            <Read path="/read/" userID={this.state.userId} />
+          ) : (
+            <NotFound default />
+          )}
+          {this.state.userId ? (
+            <Envelopes path="/envelopes/" userID={this.state.userId} />
+          ) : (
+            <NotFound default />
+          )}
+          {this.state.userId ? <IndividualLetterRead path="/letter/" /> : <NotFound default />}
+          {this.state.userId ? <WriteLetters path="/writeletters/" /> : <NotFound default />}
+          {this.state.userId ? <ThankYou path="/thankyou/" /> : <NotFound default />}
+          {this.state.userId ? <Review path="/review/" /> : <NotFound default />}
         </Router>
       </>
     );
