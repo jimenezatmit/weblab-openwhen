@@ -21,7 +21,11 @@ class LetterIcon extends Component {
         ></link>
         <div className="u-textCenter">
           <i
-            onClick={() => this.props.handleClick(this.props.index)}
+            onClick={() => {
+              console.log("hello");
+
+              this.props.handleClick(this.props.index);
+            }}
             className="far fa-envelope fa-10x"
           ></i>
         </div>

@@ -28,7 +28,25 @@ class Letter extends Component {
   }
 
   componentDidMount() {
-    if (this.props.letter_id != null) {
+    console.log("LWETTERDI", this.props.letter_id);
+    if (this.props.letter_id) {
+      get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
+        this.setState(
+          {
+            open_date: letterObj.open_date,
+            message: letterObj.message,
+            package_id: letterObj.package_id,
+            prompt: letterObj.prompt,
+            sender_name: letterObj.sender_name,
+          },
+          () => console.log(this.state.message)
+        );
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.letter_id !== prevProps.letter_id) {
       get("/api/letter", { letter_id: this.props.letter_id }).then((letterObj) => {
         this.setState(
           {
@@ -119,7 +137,7 @@ class Letter extends Component {
         console.log("letter to database, id:", result._id);
 
         // add letter to letterList in Parent component
-        this.props.update_function(result._id);
+        this.props.update_function(result._id, this.props.index);
       });
     } else {
       this.setState({
@@ -130,11 +148,11 @@ class Letter extends Component {
 
   render() {
     let finishButton = this.props.letter_id ? (
-      <button type="button" className="Create-button" onClick={this.handleUpdate}>
+      <button type="button" className="subHeading Create-button" onClick={this.handleUpdate}>
         update letter
       </button>
     ) : (
-      <button type="button" className="Create-button" onClick={this.handleSubmit}>
+      <button type="button" className="subHeading Create-button" onClick={this.handleSubmit}>
         complete letter
       </button>
     );

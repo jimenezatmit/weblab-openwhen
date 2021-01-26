@@ -5,8 +5,8 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 const GOOGLE_CLIENT_ID = "158742950516-7n744r6o2q6mrvfiel2i1lrgno87rucv.apps.googleusercontent.com";
 
-import "../../utilities.css";
-import "./Home.css";
+// import "../../utilities.css";
+// import "./Home.css";
 
 class Home extends Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class Home extends Component {
             <img
               src={logo}
               alt="Open When"
+              className="object-none object-center"
               style={{
                 marginTop: 40,
                 width: 200,
@@ -32,7 +33,7 @@ class Home extends Component {
                 position: "relative",
               }}
             />
-            <h1 className="Home-title u-textCenter">open when...</h1>
+            <h1 className="Home-title">open when...</h1>
           </div>
           <div className="Home-description">
             send a package of virtual letters with custom unlocking dates
