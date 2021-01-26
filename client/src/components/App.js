@@ -79,15 +79,11 @@ class App extends Component {
       <>
         {/* put in div and fixed height, 100%-72 pixels */}
 
-        <NavBar
-          handleLogin={this.handleLogin}
-          handleLogout={this.handleLogout}
-          userID={this.state.userId}
-        />
+        <NavBar handleLogout={this.handleLogout} userID={this.state.userId} />
 
         <Router>
           <NotFound default />
-          <Home path="/" userID={this.state.userId} />
+          <Home path="/" userID={this.state.userId} handleLogin={this.handleLogin} />
           <HowItWorks path="/howitworks/" />
           <Review path="/review/" />
 

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import logo from "../../public/logo.png";
+import GoogleLogin, { GoogleLogout } from "react-google-login";
+
+const GOOGLE_CLIENT_ID = "158742950516-7n744r6o2q6mrvfiel2i1lrgno87rucv.apps.googleusercontent.com";
 
 import "../../utilities.css";
 import "./Home.css";
@@ -11,7 +14,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    document.title = "Open When: Home";
+    document.title = "Open When";
   }
 
   render() {
@@ -42,6 +45,26 @@ class Home extends Component {
               how it works
             </Link>
           </button>
+          {this.props.userID ? null : (
+            <GoogleLogin
+              clientId={GOOGLE_CLIENT_ID}
+              buttonText="get started"
+              onSuccess={this.props.handleLogin}
+              onFailure={(err) => console.log(err)}
+              className="Home-newButton Home-description"
+              theme="dark"
+              render={(renderProps) => (
+                <button
+                  className="Home-newButton Home-description"
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >
+                  get started
+                </button>
+              )}
+            />
+          )}
+
           {this.props.userID ? (
             <div>
               <button type="button" className="Home-newButton Home-description">
@@ -56,7 +79,6 @@ class Home extends Component {
               </button>
             </div>
           ) : null}
-          ;
         </div>
       </>
     );
