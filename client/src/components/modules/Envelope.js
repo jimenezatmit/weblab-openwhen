@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 import { navigate } from "@reach/router";
 import { get } from "../../utilities";
 import moment from "moment";
+import tealClosed from "../../public/tealclosed.png";
+import tealOpen from "../../public/tealopen.png";
 
 import "../../utilities.css";
 import "./Envelope.css";
@@ -25,30 +27,42 @@ class Envelope extends Component {
   };
 
   render() {
+    let envelopeIcon = null;
+    this.props.open_date <= moment().format("MM/DD/YYYY")
+      ? (envelopeIcon = (
+          <img
+            src={tealClosed}
+            alt="Closed"
+            style={{
+              marginTop: 40,
+              width: 200,
+              resizeMode: "contain",
+              position: "relative",
+            }}
+            onClick={this.handleClick}
+          />
+        ))
+      : (envelopeIcon = (
+          <img
+            src={tealOpen}
+            alt="Open"
+            style={{
+              marginTop: 40,
+              width: 200,
+              resizeMode: "contain",
+              position: "relative",
+            }}
+            onClick={this.handleClick}
+          />
+        ));
+
     return (
       <>
-        <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
-          crossOrigin="anonymous"
-        ></link>
-        
-          {this.props.open_date <= moment().format("MM/DD/YYYY")
-              ? //past the date, open envelope
-              <div>
-              <div className="Envelope-centeredAndBlue">
-              <i onClick={this.handleClick} className="far fa-envelope-open fa-10x"></i>
-              </div>
-              <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
-              </div>
-              :
-              <div>
-              <div className="Envelope-centeredAndBlue">
-              <i onClick={this.handleClick} className="far fa-envelope fa-10x"></i>
-              </div>
-              <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
-              </div>
-          };
+        <div className="u-textCenter">
+          {envelopeIcon}
+          <h3 className="Envelope-prompt"> {this.props.prompt} </h3>
+        </div>
+        ;
       </>
     );
   }
