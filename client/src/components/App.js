@@ -13,6 +13,7 @@ import Envelopes from "./pages/Envelopes.js";
 import HowItWorks from "./pages/HowItWorks.js";
 import Mailbox from "./pages/Mailbox.js";
 import Review from "./pages/Review.js";
+import Footer from "./modules/Footer.js";
 
 import "../utilities.css";
 
@@ -109,7 +110,9 @@ class App extends Component {
           {this.state.userId ? <WriteLetters path="/writeletters/" /> : <NotFound default />}
           {this.state.userId ? <ThankYou path="/thankyou/" /> : <NotFound default />}
           {this.state.userId ? <Review path="/review/" /> : <NotFound default />}
+          
         </Router>
+        <Footer/>
         <OnRouteChange
           action={() => {
             window.scrollTo(0, 0);
