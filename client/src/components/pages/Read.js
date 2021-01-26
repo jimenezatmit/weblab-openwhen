@@ -34,7 +34,7 @@ class Read extends Component {
   };
 
   validateID = (ID) => {
-    return ID.length === 24 && typeof ID === String;
+    return ID.length === 24 && Object.prototype.toString.call(ID);
   };
 
   //takes in input from form and uses that to query database to find package
