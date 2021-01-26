@@ -77,8 +77,6 @@ class App extends Component {
   render() {
     return (
       <>
-        
-        
         <NavBar handleLogout={this.handleLogout} userID={this.state.userId} />
 
         <Router>
