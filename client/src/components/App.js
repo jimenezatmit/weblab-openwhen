@@ -77,8 +77,8 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* put in div and fixed height, 100%-72 pixels */}
-
+        
+        
         <NavBar handleLogout={this.handleLogout} userID={this.state.userId} />
 
         <Router>
