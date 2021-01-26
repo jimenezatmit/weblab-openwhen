@@ -68,6 +68,7 @@ function sendMail(recipient_email, sender_name, package_id) {
 
   var website_link = "https://openwhen.herokuapp.com/";
 
+  console.log("sender name", sender_name)
   var message = {
     from: process.env.MAIL_USER,
     to: recipient_email,
@@ -75,9 +76,10 @@ function sendMail(recipient_email, sender_name, package_id) {
     // text: "Go to https://openwhen.herokuapp.com/read/ and paste in the following package ID to receive your package: ".concat(
     //   package_id),
     html:
-      "<h2 style='color:#59c3c3'> Click <a href='" +
+      "<h3 style='color:#59c3c3'> You have a package from Open When! To view, </h3>" +
+      "<h3 style='color:#50514f'> 1. Copy this code: " + "<h3 style ='color:#b4adea'>" + package_id + "</h3> <h3 style='color:#50514f'> 2. Go to <a href='" +
       website_link +
-      "' > here</a> to open your package of letters! </h2>",
+      "' > this link </a> and click the 'get started button' to log in. Then, navigate to the 'mailbox' page and click the  'add a package id' button, pasting in the code from above. </h3>",
     // <br></br> <img src='/src/public/logo.png' alt='Open When' style='marginTop: 40, width: 200, resizeMode: 'contain', position: 'relative''/> "
   };
 
