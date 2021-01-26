@@ -67,25 +67,22 @@ class Mailbox extends Component {
         {/* Goal: create two columns, one rendering package icon for created ones, other for received */}
         <div className="Mailbox-row">
           <div className="Mailbox-column">
-            <h2 className = "u-textCenter">created</h2>
-            {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
-            {createdPackageList}
+            <h2 className="u-textCenter">created</h2>
             <button type="button" className="Mailbox-newButton Mailbox-description u-textCenter">
               <Link to="/create/" className="Mailbox-link u-textCenter">
                 create another package
               </Link>
             </button>
+            {createdPackageList}
           </div>
           <div className="Mailbox-column u-textCenter">
             <h2>received</h2>
-            {/* all this stuff below should hopefully work but I can't test until we get the other parts working */}
-
-            {receivedPackageList}
             <button type="button" className="Mailbox-newButton Mailbox-description u-textCenter">
               <Link to="/read/" className="Mailbox-link">
                 add a package ID
               </Link>
             </button>
+            {receivedPackageList}
           </div>
         </div>
       </>
