@@ -78,6 +78,7 @@ class App extends Component {
   render() {
     return (
       <>
+      <div className = "App-container">
         <NavBar handleLogout={this.handleLogout} userID={this.state.userId} />
 
         <Router>
@@ -112,12 +113,15 @@ class App extends Component {
           {this.state.userId ? <Review path="/review/" /> : <NotFound default />}
           
         </Router>
+        </div>
         <Footer/>
+        
         <OnRouteChange
           action={() => {
             window.scrollTo(0, 0);
           }}
         />
+        
       </>
     );
   }

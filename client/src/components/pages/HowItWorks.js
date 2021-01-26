@@ -13,7 +13,7 @@ class HowItWorks extends Component {
     return (
       <>
         <h1 className="Home-title u-textCenter u-margin">how it works</h1>
-        <div class="sidenav">
+        <div className="sidenav">
           <a href="#">how it works</a>
           <a href = "#">faq</a>
           <a href="#">about us</a>
