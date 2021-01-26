@@ -50,6 +50,7 @@ class WriteLetters extends Component {
         sender_name={sender_name}
         recipient_email={recipient_email}
         complete_function={this.completeLetter}
+        delete_function={this.deleteLetter}
         update_function={this.updateLetter}
         index={i}
       />
@@ -96,6 +97,21 @@ class WriteLetters extends Component {
       },
       () => console.log(this.state.current_letter)
     );
+  };
+
+  deleteLetter = (index) => {
+    const newLetters = this.state.letter_list.slice(); // copy the array
+    const newIds = this.state.letter_ids.slice();
+
+    delete newLetters[index - 1];
+    delete newIds[index - 1];
+
+    this.setState({
+      letter_list: newLetters,
+      letter_id: newIds,
+      current_letter: null,
+      show_next: true,
+    }); //set the new state
   };
 
   nextPage = () => {
@@ -149,6 +165,7 @@ class WriteLetters extends Component {
           sender_name={this.props.location.state.sender_name}
           recipient_email={this.props.location.state.recipient_email}
           complete_function={this.completeLetter}
+          delete_function={this.deleteLetter}
           update_function={this.updateLetter}
           index={this.state.letter_list.length}
         />

@@ -68,7 +68,7 @@ function sendMail(recipient_email, sender_name, package_id) {
 
   var website_link = "https://openwhen.herokuapp.com/";
 
-  console.log("sender name", sender_name)
+  console.log("sender name", sender_name);
   var message = {
     from: process.env.MAIL_USER,
     to: recipient_email,
@@ -77,7 +77,10 @@ function sendMail(recipient_email, sender_name, package_id) {
     //   package_id),
     html:
       "<h3 style='color:#59c3c3'> You have a package from Open When! To view, </h3>" +
-      "<h3 style='color:#50514f'> 1. Copy this code: " + "<h3 style ='color:#b4adea'>" + package_id + "</h3> <h3 style='color:#50514f'> 2. Go to <a href='" +
+      "<h3 style='color:#50514f'> 1. Copy this code: " +
+      "<h3 style ='color:#b4adea'>" +
+      package_id +
+      "</h3> <h3 style='color:#50514f'> 2. Go to <a href='" +
       website_link +
       "' > this link </a> and click the 'get started button' to log in. Then, navigate to the 'mailbox' page and click the  'add a package id' button, pasting in the code from above. </h3>",
     // <br></br> <img src='/src/public/logo.png' alt='Open When' style='marginTop: 40, width: 200, resizeMode: 'contain', position: 'relative''/> "
@@ -127,6 +130,10 @@ router.post("/package", (req, res) => {
     .save()
     .then((package) => res.send(package))
     .then(() => console.log(newPackage));
+});
+
+router.post("/deleteletter", (req, res) => {
+  Letter.deleteOne({ _id: req.body.letter_id }).then(() => console.log("deleted letter"));
 });
 
 //trying to add get for package and letter 1/15
