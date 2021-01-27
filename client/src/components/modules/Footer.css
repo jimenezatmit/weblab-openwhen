@@ -1,7 +1,14 @@
-.Footer-footer {
+.Footer-footerContainer {
   width: 100%;
   /* bottom: 0; */
   height: 50px;
   /* padding: 5px; */
   background-color: var(--lightpurple);
+}
+
+.Footer-footerText {
+  padding-top: 12px;
+  text-align: center;
+  line-height: normal;
+  font-family: "Quicksand", sans-serif;
 }
