@@ -40,6 +40,20 @@
   height: 40px;
 }
 
+.Review-button {
+  background: var(--tealblue);
+  border: 1px solid #59c3c3;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+
+  width: 170px;
+  height: 40px;
+  margin-top: var(--m);
+  text-align: center;
+}
+
 .Create-link,
 .Create-link:visited {
   color: var(--black);

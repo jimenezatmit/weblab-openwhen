@@ -15,6 +15,7 @@ class Review extends Component {
     this.state = {
       current_letter: null,
       letter_list: [],
+      current_letter_index: null
     };
   }
 
@@ -39,6 +40,7 @@ class Review extends Component {
   renderLetter = (index) => {
     this.setState({
       current_letter: this.state.letter_list[index],
+      current_letter_index: index
     });
   };
 
@@ -72,7 +74,7 @@ class Review extends Component {
   render() {
     let letterPile = null;
     letterPile = this.state.letter_list.map((letter, index) => (
-      <LetterIcon index={index} handleClick={this.renderLetter}></LetterIcon>
+      <LetterIcon index={index} handleClick={this.renderLetter} current_letter_index={this.state.current_letter_index}></LetterIcon>
     ));
 
     let singleLetter = null;
@@ -82,17 +84,17 @@ class Review extends Component {
       <>
         <h1 className="Write-title u-textCenter">Review</h1>
         <div className="Write-container">
-          <div>{singleLetter}</div>
-          <div>{letterPile}</div>
+          <div><h2> selected letter content</h2>{singleLetter}</div>
+          <div> <h2> letters in package </h2>{letterPile}</div>
         </div>
         <div className="u-textCenter">
-          <button type="button" className="Create-button" onClick={this.backPage}>
+          <button type="button" className="Review-button" onClick={this.backPage}>
             back to edit
           </button>
         </div>
         <br></br>
         <div className="u-textCenter">
-          <button type="button" className="Create-button" onClick={this.handleSubmit}>
+          <button type="button" className="Review-button" onClick={this.handleSubmit}>
             submit
           </button>
         </div>
