@@ -48,7 +48,7 @@ class Mailbox extends Component {
   }
 
   render() {
-    let createdPackageList = this.state.createdPackages.map((packageObj) => (
+    let createdPackageList = this.state.createdPackages.reverse().map((packageObj) => (
       <PackageIcon
         package_id={packageObj._id}
         word_under={"To:  ".concat(packageObj.recipient_email)}
@@ -56,7 +56,7 @@ class Mailbox extends Component {
       />
     ));
 
-    let receivedPackageList = this.state.receivedPackages.map((packageObj) => (
+    let receivedPackageList = this.state.receivedPackages.reverse().map((packageObj) => (
       <PackageIcon
         package_id={packageObj._id}
         word_under={"From:  ".concat(packageObj.sender_name)}
