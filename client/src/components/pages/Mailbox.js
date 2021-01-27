@@ -52,6 +52,7 @@ class Mailbox extends Component {
       <PackageIcon
         package_id={packageObj._id}
         word_under={"To:  ".concat(packageObj.recipient_email)}
+        type="create"
       />
     ));
 
@@ -59,6 +60,7 @@ class Mailbox extends Component {
       <PackageIcon
         package_id={packageObj._id}
         word_under={"From:  ".concat(packageObj.sender_name)}
+        type="read"
       />
     ));
     return (

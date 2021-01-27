@@ -108,15 +108,6 @@ class Letter extends Component {
         showError: true,
       });
     }
-    // this.setState({
-    //   open_date: "",
-    //   message: "",
-    //   package_id: "",
-    //   prompt: "",
-    //   recipient_email: "",
-    //   sender_name: "",
-    //   showError: null,
-    // });
   };
 
   handleUpdate = (event) => {
@@ -146,11 +137,28 @@ class Letter extends Component {
     }
   };
 
+  handleDelete = (event) => {
+    event.preventDefault();
+
+    const body = {
+      letter_id: this.props.letter_id,
+    };
+
+    this.props.delete_function(this.props.index);
+
+    post("/api/deleteletter", body);
+  };
+
   render() {
     let finishButton = this.props.letter_id ? (
-      <button type="button" className="subHeading Create-button" onClick={this.handleUpdate}>
-        update letter
-      </button>
+      <div className="u-textCenter">
+        <button type="button" className="subHeading Create-button" onClick={this.handleUpdate}>
+          update letter
+        </button>
+        <button type="button" className="subHeading Create-button" onClick={this.handleDelete}>
+          delete letter
+        </button>
+      </div>
     ) : (
       <button type="button" className="subHeading Create-button" onClick={this.handleSubmit}>
         complete letter
