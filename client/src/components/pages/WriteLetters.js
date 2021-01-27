@@ -126,7 +126,7 @@ class WriteLetters extends Component {
       state: {
         // letter_list: this.state.letter_list,
         // letter_ids: "hello",
-        sender_name: this.props.location.state.recipient_email,
+        sender_name: this.props.location.state.sender_name,
         recipient_email: this.props.location.state.recipient_email,
         package_id: this.props.location.state.package_id,
       },
