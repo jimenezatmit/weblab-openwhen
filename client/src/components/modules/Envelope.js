@@ -28,7 +28,7 @@ class Envelope extends Component {
 
   render() {
     let envelopeIcon = null;
-    this.props.open_date <= moment().format("MM/DD/YYYY")
+    this.props.open_date >= moment().format("MM/DD/YYYY")
       ? (envelopeIcon = (
           <img
             src={tealClosed}
