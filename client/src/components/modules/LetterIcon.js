@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import { get } from "../../utilities";
 import purpleClosed from "../../public/purpleclosed.png";
 import tealClosed from "../../public/tealclosed.png";
+import purpleOpen from "../../public/purpleopen.png";
 
 import "../../utilities.css";
 import "./LetterIcon.css";
@@ -16,10 +17,29 @@ class LetterIcon extends Component {
   render() {
     return (
       <>
-        <div className="u-textCenter">
+      {this.props.current_letter_index === this.props.index ? 
+      <div className="u-textCenter">
+      <img
+        src={purpleOpen}
+        alt="Purple Open"
+        style={{
+          marginTop: 40,
+          width: 200,
+          resizeMode: "contain",
+          position: "relative",
+        }}
+        onClick={() => {
+          console.log("hello");
+
+          this.props.handleClick(this.props.index);
+        }}
+      />
+    </div>
+    :
+    <div className="u-textCenter">
           <img
             src={purpleClosed}
-            alt="Purpose Closed"
+            alt="Purple Closed"
             style={{
               marginTop: 40,
               width: 200,
@@ -33,6 +53,7 @@ class LetterIcon extends Component {
             }}
           />
         </div>
+  }
       </>
     );
   }

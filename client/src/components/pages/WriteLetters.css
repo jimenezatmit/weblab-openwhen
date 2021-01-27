@@ -3,6 +3,14 @@
   font-weight: bold;
 }
 
+.WriteLetters-subheading {
+  font-weight: 300;
+  font-size: var(--l);
+  margin-top: var(--xs);
+  margin-bottom: var(--xs);
+  text-align: center;
+  color: var(--black);
+}
 #subHeading {
   font-weight: 300;
   font-size: var(--l);
@@ -38,6 +46,20 @@
 
   width: 170px;
   height: 40px;
+}
+
+.WriteLetters-button {
+  background: var(--tealblue);
+  border: 1px solid #59c3c3;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+
+  width: 170px;
+  height: 40px;
+  margin-top: var(--m);
+  text-align: center;
 }
 
 .Create-link,
