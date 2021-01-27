@@ -1,3 +1,8 @@
+.Mailbox-title {
+  font-size: var(--xxl);
+  font-weight: bold;
+}
+
 .Mailbox-column {
   display: flex;
   flex-direction: column;

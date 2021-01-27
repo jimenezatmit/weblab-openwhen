@@ -65,7 +65,7 @@ class Mailbox extends Component {
     ));
     return (
       <>
-        <h1 className="u-textCenter">welcome to your mailbox</h1>
+        <h1 className="u-textCenter Mailbox-title">welcome to your mailbox</h1>
         {/* Goal: create two columns, one rendering package icon for created ones, other for received */}
         <div className="Mailbox-row">
           <div className="Mailbox-column">

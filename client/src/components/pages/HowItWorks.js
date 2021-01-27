@@ -13,15 +13,11 @@ class HowItWorks extends Component {
     return (
       <>
         <h1 className="Home-title u-textCenter u-margin">how it works</h1>
-        <div className="sidenav">
-          <a href="#">how it works</a>
-          <a href = "#">faq</a>
-          <a href="#">about us</a>
-        </div>
+
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">1. login</h4>
         <div className="Home-description">
-          press "get started" and log in with Google
+          press "get started" on the home page and log in with Google
         </div>
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">2. create package</h4>
@@ -31,8 +27,8 @@ class HowItWorks extends Component {
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">3. recipient views letters </h4>
         <div className="Home-description">
-          click "get started", log in, navigate to the "mailbox" page, click on "add a package id" button and paste in
-          code from email
+          click "get started", log in, navigate to the "mailbox" page, click on "add a package id"
+          button and paste in code from email
         </div>
         <hr className="Home-line" />
 
@@ -70,7 +66,10 @@ class HowItWorks extends Component {
         <hr className="Home-line" />
         <h4 className="Home-subTitle Home-blueText">An Jimenez and Kate Pearce </h4>
         <div className="Home-description">
-        We are two MIT '21 gals who believe that small acts of kindness and thoughtful messages can brighten people's lives. We hope that this simple site encourages you to support, inspire, encourage, and celebrate your friends, family, employees, coworkers, or anyone at all!
+          we are two MIT '21 gals who believe that small acts of kindness and thoughtful messages
+          can brighten people's lives. we hope that this simple site encourages you to support,
+          inspire, encourage, and celebrate your friends, family, employees, coworkers, or anyone at
+          all!
         </div>
       </>
     );
