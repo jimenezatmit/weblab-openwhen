@@ -15,7 +15,7 @@ class Review extends Component {
     this.state = {
       current_letter: null,
       letter_list: [],
-      current_letter_index: null
+      current_letter_index: null,
     };
   }
 
@@ -40,7 +40,7 @@ class Review extends Component {
   renderLetter = (index) => {
     this.setState({
       current_letter: this.state.letter_list[index],
-      current_letter_index: index
+      current_letter_index: index,
     });
   };
 
@@ -74,7 +74,11 @@ class Review extends Component {
   render() {
     let letterPile = null;
     letterPile = this.state.letter_list.map((letter, index) => (
-      <LetterIcon index={index} handleClick={this.renderLetter} current_letter_index={this.state.current_letter_index}></LetterIcon>
+      <LetterIcon
+        index={index}
+        handleClick={this.renderLetter}
+        current_letter_index={this.state.current_letter_index}
+      ></LetterIcon>
     ));
 
     let singleLetter = null;
@@ -82,19 +86,25 @@ class Review extends Component {
 
     return (
       <>
-        <h1 className="Write-title u-textCenter">Review</h1>
+        <h1 className="Create-title u-textCenter">Review</h1>
         <div className="Write-container">
-          <div><h2> selected letter content</h2>{singleLetter}</div>
-          <div> <h2> letters in package </h2>{letterPile}</div>
+          <div>
+            <h2> selected letter content</h2>
+            {singleLetter}
+          </div>
+          <div>
+            {" "}
+            <h2> click envelope to preview </h2>
+            {letterPile}
+          </div>
         </div>
         <div className="u-textCenter">
           <button type="button" className="Review-button" onClick={this.backPage}>
             back to edit
           </button>
         </div>
-        <br></br>
         <div className="u-textCenter">
-          <button type="button" className="Review-button" onClick={this.handleSubmit}>
+          <button type="button" className="Review-submit" onClick={this.handleSubmit}>
             submit
           </button>
         </div>

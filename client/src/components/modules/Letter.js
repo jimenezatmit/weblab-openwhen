@@ -172,9 +172,9 @@ class Letter extends Component {
             <label className="Create-description" htmlFor="prompt">
               prompt*
             </label>
-            <div id="smallText">start your prompt with "open when"</div>
+            <div id="smallText">you can start your prompt with "open when..."</div>
             <textarea
-              className="Create-field"
+              className="Create-field Letter-promptField"
               name="prompt"
               required
               placeholder="open when _____"
@@ -182,6 +182,22 @@ class Letter extends Component {
               id="prompt"
               onChange={this.handleChange}
               value={this.state.prompt}
+            ></textarea>
+            <br></br>
+
+            <label className="Create-description" htmlFor="message">
+              message*
+            </label>
+            <br></br>
+            <textarea
+              className="Create-field Letter-messageField"
+              name="message"
+              required
+              placeholder="write letter here"
+              type="text"
+              id="message"
+              onChange={this.handleChange}
+              value={this.state.message}
             ></textarea>
             <br></br>
 
@@ -199,23 +215,6 @@ class Letter extends Component {
               onChange={this.handleChange}
               value={this.state.open_date}
             ></input>
-            <br></br>
-
-            <label className="Create-description" htmlFor="message">
-              message*
-            </label>
-            <br></br>
-            <textarea
-              className="Create-field"
-              name="message"
-              required
-              placeholder="write letter here"
-              type="text"
-              id="message"
-              onChange={this.handleChange}
-              value={this.state.message}
-            ></textarea>
-            <br></br>
           </form>
         </div>
 

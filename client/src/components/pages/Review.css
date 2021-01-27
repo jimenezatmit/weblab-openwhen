@@ -50,6 +50,20 @@
 
   width: 170px;
   height: 40px;
+  margin-top: var(--xl);
+  text-align: center;
+}
+
+.Review-submit {
+  background: var(--lightpurple);
+  border: 1px solid var(--lightpurple);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+
+  width: 170px;
+  height: 40px;
   margin-top: var(--m);
   text-align: center;
 }
