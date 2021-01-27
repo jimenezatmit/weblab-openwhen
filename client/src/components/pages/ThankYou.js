@@ -18,8 +18,11 @@ class ThankYou extends Component {
     return (
       <>
         <h1 className="Thank-title u-textCenter">
-          Thank you for using Open When! Your package has been sent.
+          Thank You
         </h1>
+        <h2 className = "subheading u-textCenter"> 
+          your package has been sent
+        </h2>
         <div className="buttonContainer">
           <button type="button" className="Thank-button Thank-description">
             <Link to="/" className="Thank-link">
