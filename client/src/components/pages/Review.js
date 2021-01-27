@@ -88,7 +88,7 @@ class Review extends Component {
       <>
         <h1 className="Create-title u-textCenter">Review</h1>
         <div className="Write-container">
-          <div>
+          <div className="u-textCenter">
             <h2> selected letter content</h2>
             {singleLetter}
           </div>

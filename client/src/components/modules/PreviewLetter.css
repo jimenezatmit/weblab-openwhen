@@ -1,8 +1,9 @@
-.IndividualLetterRead-body {
+.Preview-body {
   background-color: var(--seafoam);
   text-align: left;
-  margin-left: 56px;
-  margin-right: 56px;
+  /* margin-left: 56px;
+  margin-right: 56px; */
+  width: 400px;
 }
 
 .IndividualLetterRead-prompt {
