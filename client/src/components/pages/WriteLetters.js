@@ -197,7 +197,7 @@ class WriteLetters extends Component {
               complete
             </button> */}
           </div>
-          <div>
+          <div className="u-textCenter">
             <div className="WriteLetters-subheading">your letters</div>
             {letterPile}
             {addAnother}
@@ -205,7 +205,7 @@ class WriteLetters extends Component {
         </div>
         {this.state.show_next == true ? (
           <div className="u-textCenter">
-            <button type="button" className="WriteLetters-button" onClick={this.nextPage}>
+            <button type="button" className="WriteLetters-next" onClick={this.nextPage}>
               next
             </button>
           </div>

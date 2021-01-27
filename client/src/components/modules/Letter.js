@@ -152,10 +152,10 @@ class Letter extends Component {
   render() {
     let finishButton = this.props.letter_id ? (
       <div className="u-textCenter">
-        <button type="button" className="subHeading Create-button" onClick={this.handleUpdate}>
+        <button type="button" className="subHeading Letter-button" onClick={this.handleUpdate}>
           update letter
         </button>
-        <button type="button" className="subHeading Create-button" onClick={this.handleDelete}>
+        <button type="button" className="subHeading Letter-button" onClick={this.handleDelete}>
           delete letter
         </button>
       </div>
